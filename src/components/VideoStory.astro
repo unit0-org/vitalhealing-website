@@ -1,0 +1,40 @@
+---
+// A self-hosted testimonial video with a short intro. Videos live in public/videos/ (mp4 + webp poster).
+// Copy lives in `videos` in es.ts / en.ts. Only show clients who agreed to appear on the site.
+import { t, type Lang } from '../i18n';
+type VideoKey = 'dulce' | 'participant';
+const files: Record<VideoKey, string> = {
+  dulce: '/videos/dulce-lopez',
+  participant: '/videos/hormone-reset-participant',
+};
+interface Props { lang: Lang; video: VideoKey }
+const { lang, video } = Astro.props;
+const v = t(lang).videos[video];
+const src = files[video];
+---
+<figure class="video-story">
+  <div class="frame">
+    <video controls preload="none" playsinline poster={`${src}.webp`} width="640" height="360" aria-label={v.caption}>
+      <source src={`${src}.mp4`} type="video/mp4" />
+    </video>
+  </div>
+  <figcaption>
+    <h3>{v.title}</h3>
+    <p>{v.text}</p>
+    <p class="who"><strong>{v.caption}</strong><span>{v.lang}</span></p>
+  </figcaption>
+</figure>
+
+<style>
+  .video-story { margin: 0; display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+  .frame { background: var(--forest); border-radius: var(--radius-none); overflow: hidden; aspect-ratio: 16 / 9; }
+  video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  h3 { font-size: clamp(22px, 2.4vw, 28px); margin-bottom: var(--space-2); }
+  .who { display: flex; flex-direction: column; gap: 4px; margin: var(--space-2) 0 0; font-size: 15px; }
+  .who strong { color: var(--forest); }
+  .who span { color: var(--leaf-deep); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px; }
+
+  @media (max-width: 720px) {
+    .video-story { grid-template-columns: 1fr; text-align: center; }
+  }
+</style>

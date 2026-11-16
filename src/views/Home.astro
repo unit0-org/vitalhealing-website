@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Stories from '../components/Stories.astro';
+import VideoStory from '../components/VideoStory.astro';
 import PhotoSlot from '../components/PhotoSlot.astro';
 import { t, path, type Lang, type RouteKey } from '../i18n';
 import { site } from '../config';
@@ -24,7 +25,7 @@ const soon = lang === 'es' ? 'Foto próximamente' : 'Photo coming soon';
       </div>
       <div class="hero-photo">
         <div class="block" aria-hidden="true"></div>
-        <img src="/images/dianeris-portrait.webp" alt={h.hero.photoAlt} width="897" height="1024" fetchpriority="high" />
+        <img src="/images/dianeris-hero.webp" alt={h.hero.photoAlt} width="576" height="720" fetchpriority="high" />
       </div>
     </div>
   </section>
@@ -89,6 +90,8 @@ const soon = lang === 'es' ? 'Foto próximamente' : 'Photo coming soon';
     <div class="container">
       <span class="eyebrow">{h.stories.eyebrow}</span>
       <h2>{h.stories.title}</h2>
+      <div class="video-wrap"><VideoStory lang={lang} video="dulce" /></div>
+      <p class="more-label">{d.videos.more}</p>
       <div class="stories-wrap"><Stories lang={lang} /></div>
     </div>
   </section>
@@ -110,7 +113,7 @@ const soon = lang === 'es' ? 'Foto próximamente' : 'Photo coming soon';
   .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
   .hero-copy .lede { max-width: 34em; margin-bottom: var(--space-4); }
   .hero-photo { position: relative; justify-self: end; width: min(100%, 440px, calc((var(--fold) - 2 * clamp(32px, 5vh, 64px) - 24px) * 0.8)); }
-  .hero-photo img { position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%; }
+  .hero-photo img { position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 15%; }
   .block { position: absolute; inset: 24px -24px -24px 24px; background: var(--leaf); }
 
   .center { text-align: center; }
@@ -136,14 +139,33 @@ const soon = lang === 'es' ? 'Foto próximamente' : 'Photo coming soon';
   .about :global(.about-photo) { background: transparent; }
   .about .btn { margin-top: var(--space-1); }
 
-  .stories-wrap { margin-top: var(--space-4); }
+  .video-wrap { margin-top: var(--space-4); }
+  .stories-wrap { margin-top: var(--space-3); }
+  .more-label { margin: var(--space-5) 0 0; padding-top: var(--space-4); border-top: 3px solid var(--line); font-weight: 700; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--leaf-deep); }
+  @media (max-width: 720px) { .more-label { text-align: center; } }
 
+  /* Mid screens: hero stays side by side with a smaller photo; other sections stack */
   @media (max-width: 960px) {
-    .hero-grid, .mc, .about { grid-template-columns: 1fr; }
-    .hero { min-height: 0; }
-    .hero-photo { justify-self: center; width: min(100%, 380px); margin-right: 24px; }
+    .hero-grid { grid-template-columns: 1.4fr 1fr; gap: clamp(24px, 4vw, 40px); }
+    .hero-photo { width: min(100%, 320px); }
+    .block { inset: 16px -16px -16px 16px; }
+    .mc, .about { grid-template-columns: 1fr; }
     .mc-action { justify-self: start; }
     .who { grid-template-columns: 1fr; }
     .about :global(.about-photo) { max-width: 300px; }
+  }
+  /* Small screens: everything centred, no photos */
+  @media (max-width: 720px) {
+    .hero { min-height: 0; text-align: center; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-photo { display: none; }
+    .hero-copy .lede { margin-inline: auto; }
+    .hero-copy .btn-row { justify-content: center; }
+    .mc, .who-body, .about { text-align: center; }
+    .mc-action { justify-self: center; }
+    .who-body .btn { align-self: center; }
+    .who-card :global(.who-photo), .about :global(.about-photo) { display: none; }
+    .who-card { border-top: 6px solid var(--tone-deep); }
+    section > .container > .eyebrow, section > .container > h2 { display: block; text-align: center; }
   }
 </style>

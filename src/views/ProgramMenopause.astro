@@ -1,0 +1,298 @@
+---
+// Hormone Reset (Reseteo Hormonal): the perimenopause and menopause program.
+import Base from '../layouts/Base.astro';
+import Stories from '../components/Stories.astro';
+import VideoStory from '../components/VideoStory.astro';
+import { t, path, type Lang } from '../i18n';
+import { site } from '../config';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const d = t(lang);
+const m = d.menopause;
+const includedId = lang === 'es' ? 'incluye' : 'included';
+---
+<Base lang={lang} route="programMenopause" title={d.meta.menopause.title} description={d.meta.menopause.description}>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">{m.hero.eyebrow}</span>
+        <h1>{m.hero.titleStart} <mark class="mark">{m.hero.titleMark}</mark>{m.hero.titleEnd}</h1>
+        <p class="lede">{m.hero.sub}</p>
+        <div class="btn-row">
+          <a class="btn btn--marked" href={site.bookingUrl} target="_blank" rel="noopener">{m.hero.ctaPrimary}</a>
+          <a class="btn btn--ghost" href={`#${includedId}`}>{m.hero.ctaSecondary}</a>
+        </div>
+        <ul class="facts">
+          {m.hero.facts.map((f) => (
+            <li><img src="/brand/leaf-mark.png" alt="" width="18" height="22" />{f}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="hero-photo">
+        <div class="block" aria-hidden="true"></div>
+        <img src="/images/dianeris-portrait.webp" alt={d.home.hero.photoAlt} width="897" height="1024" fetchpriority="high" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Signs -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="head center">
+        <span class="eyebrow">{m.signs.eyebrow}</span>
+        <h2>{m.signs.title}</h2>
+      </div>
+      <ul class="signs">
+        {m.signs.items.map((s) => (
+          <li><img src="/brand/leaf-mark.png" alt="" width="22" height="27" /><span>{s}</span></li>
+        ))}
+      </ul>
+      <p class="close">{m.signs.closeStart} <mark class="mark">{m.signs.closeMark}</mark>{m.signs.closeEnd}</p>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section section--forest">
+    <div class="container">
+      <div class="head split">
+        <div>
+          <span class="eyebrow">{m.approach.eyebrow}</span>
+          <h2>{m.approach.title}</h2>
+        </div>
+        <p class="lede">{m.approach.text}</p>
+      </div>
+      <ol class="steps">
+        {m.approach.steps.map((s, i) => (
+          <li>
+            <span class="num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Outcomes -->
+  <section class="section section--sage">
+    <div class="container">
+      <div class="head center">
+        <span class="eyebrow">{m.outcomes.eyebrow}</span>
+        <h2>{m.outcomes.titleStart} <mark class="mark">{m.outcomes.titleMark}</mark>{m.outcomes.titleEnd}</h2>
+      </div>
+      <ul class="outcomes">
+        {m.outcomes.items.map((o) => (
+          <li>
+            <svg class="check" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><circle cx="12" cy="12" r="12" /><path d="M7 12.5l3.2 3.2L17 9" /></svg>
+            <span>{o}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="note">{m.outcomes.note}</p>
+    </div>
+  </section>
+
+  <!-- What's included + price -->
+  <section class="section section--white" id={includedId}>
+    <div class="container">
+      <div class="head">
+        <span class="eyebrow">{m.included.eyebrow}</span>
+        <h2>{m.included.title}</h2>
+      </div>
+      <div class="offer">
+        <ul class="included">
+          {m.included.items.map((it) => (
+            <li>
+              <img src="/brand/leaf-mark.png" alt="" width="22" height="27" />
+              <div>
+                <h3>{it.title}</h3>
+                <p>{it.text}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <aside class="price">
+          <span class="eyebrow">{m.included.priceLabel}</span>
+          <p class="amount">{m.included.price}</p>
+          <p class="terms">{m.included.priceTerms}</p>
+          <p class="detail">{m.included.priceDetail}</p>
+          <a class="btn btn--marked" href={site.bookingUrl} target="_blank" rel="noopener">{m.included.cta}</a>
+          <p class="cta-note">{m.included.ctaNote}</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee -->
+  <section class="section section--forest">
+    <div class="container guarantee">
+      <div class="seal" aria-hidden="true">
+        <img src="/brand/leaf-mark.png" alt="" width="44" height="54" />
+        <span>100%</span>
+      </div>
+      <div>
+        <span class="eyebrow">{m.guarantee.eyebrow}</span>
+        <h2>{m.guarantee.title}</h2>
+        <p class="lede">{m.guarantee.text}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stories -->
+  <section class="section">
+    <div class="container">
+      <div class="head center">
+        <span class="eyebrow">{m.stories.eyebrow}</span>
+        <h2>{m.stories.title}</h2>
+      </div>
+      <div class="video-panel"><VideoStory lang={lang} video="participant" /></div>
+      <p class="more-label">{d.videos.more}</p>
+      <div class="stories-wrap two"><Stories lang={lang} pick={[1, 2]} /></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--white">
+    <div class="container faq-grid">
+      <div class="head">
+        <span class="eyebrow">{m.faq.eyebrow}</span>
+        <h2>{m.faq.title}</h2>
+      </div>
+      <div class="faq">
+        {m.faq.items.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section section--sage">
+    <div class="container narrow center">
+      <img src="/brand/leaf-mark.png" alt="" width="44" height="54" class="final-mark" />
+      <h2>{m.final.title}</h2>
+      <p class="lede">{m.final.text}</p>
+      <div class="btn-row">
+        <a class="btn btn--marked" href={site.bookingUrl} target="_blank" rel="noopener">{m.final.cta}</a>
+        <a class="btn btn--ghost" href={path('masterclass', lang)}>{m.final.secondary}</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .center { text-align: center; }
+  .center .btn-row { justify-content: center; margin-top: var(--space-3); }
+  .head { margin-bottom: var(--space-4); }
+  .head h2 { margin-bottom: 0; }
+  .head.center h2 { max-width: 20em; margin-inline: auto; }
+  #incluye, #included { scroll-margin-top: 74px; }
+  .section--forest .lede, .section--forest p { color: var(--on-forest); }
+
+  /* Hero: fills the first screen; photo height follows the viewport */
+  .hero { --fold: calc(100svh - 74px); --pad: clamp(32px, 5vh, 64px); min-height: var(--fold); display: flex; align-items: center; padding-block: var(--pad); overflow: hidden; }
+  .hero h1 { font-size: clamp(36px, min(4.6vw, 7vh), 58px); }
+  .hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+  .hero-copy .lede { max-width: 32em; margin-bottom: var(--space-4); }
+  .facts { list-style: none; margin: var(--space-4) 0 0; padding: var(--space-3) 0 0; border-top: 3px solid var(--line); display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
+  .facts li { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--forest); font-size: 16px; }
+  .hero-photo { position: relative; justify-self: end; width: min(100%, 420px, calc((var(--fold) - 2 * var(--pad) - 24px) * 0.8)); }
+  .hero-photo img { position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 10%; }
+  .block { position: absolute; inset: 24px -24px -24px 24px; background: var(--sage); }
+
+  /* Signs */
+  .signs { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+  .signs li { background: var(--cream); border-radius: var(--radius-md); padding: var(--space-3); display: flex; flex-direction: column; gap: var(--space-2); font-size: 18px; line-height: 1.5; color: var(--forest); }
+  .close { margin: var(--space-5) auto 0; max-width: 30em; text-align: center; font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 30px); line-height: 1.45; color: var(--forest); }
+
+  /* Steps */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); align-items: end; }
+  .split .lede { margin: 0; }
+  .steps { list-style: none; padding: 0; margin: var(--space-2) 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+  .steps li { background: color-mix(in srgb, var(--white) 7%, var(--forest)); border-radius: var(--radius-md); padding: var(--space-4) var(--space-3); border-top: 4px solid var(--leaf); }
+  .steps p { margin: 0; }
+  .num { display: block; font-family: var(--font-display); font-size: 44px; line-height: 1; color: var(--leaf); margin-bottom: var(--space-3); }
+
+  /* Outcomes */
+  .outcomes { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); }
+  .outcomes li { background: var(--white); border-radius: var(--radius-md); padding: var(--space-3); display: flex; align-items: center; gap: var(--space-2); color: var(--forest); font-family: var(--font-display); font-size: 17px; line-height: 1.4; }
+  .check { flex: none; }
+  .check circle { fill: var(--sage); }
+  .check path { fill: none; stroke: var(--leaf-deep); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  .note { margin: var(--space-4) auto 0; font-size: 15px; max-width: 46em; text-align: center; }
+
+  /* Included + price */
+  .offer { display: grid; grid-template-columns: 1.6fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: start; }
+  .included { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4) var(--space-4); }
+  .included li { display: flex; gap: var(--space-2); align-items: flex-start; }
+  .included li img { margin-top: 2px; flex: none; }
+  .included h3 { font-size: 19px; margin-bottom: 6px; }
+  .included p { margin: 0; }
+  .price { background: var(--cream); border-radius: var(--radius-md); padding: var(--space-4) var(--space-3); text-align: center; border-top: 6px solid var(--forest); }
+  .amount { font-family: var(--font-display); font-size: clamp(40px, 5vw, 52px); color: var(--forest); line-height: 1.1; margin: var(--space-1) 0 0; }
+  .terms { font-weight: 700; color: var(--forest); margin: var(--space-1) 0 var(--space-2); }
+  .detail { margin-bottom: var(--space-3); }
+  .cta-note { font-size: 15px; margin: var(--space-3) 0 0; }
+
+  /* Guarantee */
+  .guarantee { display: grid; grid-template-columns: auto 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; max-width: 960px; }
+  .guarantee h2 { margin-bottom: var(--space-2); }
+  .guarantee .lede { margin: 0; }
+  .seal { width: 168px; height: 168px; border-radius: 50%; border: 3px solid var(--leaf); outline: 1px solid color-mix(in srgb, var(--leaf) 45%, var(--forest)); outline-offset: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+  .seal span { font-family: var(--font-display); font-size: 30px; color: var(--white); }
+
+  /* Stories */
+  .video-panel { background: var(--white); border-radius: var(--radius-md); padding: clamp(16px, 3vw, 32px); }
+  .stories-wrap { margin-top: var(--space-3); }
+  .stories-wrap.two :global(.track) { grid-auto-columns: calc((100% - var(--gap)) / 2); }
+  .more-label { margin: var(--space-5) 0 0; padding-top: var(--space-4); border-top: 3px solid var(--line); font-weight: 700; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--leaf-deep); text-align: center; }
+
+  /* FAQ */
+  .faq-grid { display: grid; grid-template-columns: 1fr 1.7fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .faq details { border-top: 2px solid var(--line); }
+  .faq details:last-child { border-bottom: 2px solid var(--line); }
+  .faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); min-height: 44px; padding-block: var(--space-2); font-family: var(--font-display); font-size: 19px; color: var(--forest); }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: '+'; font-family: var(--font-sans); font-size: 26px; color: var(--leaf-deep); flex-shrink: 0; }
+  .faq details[open] summary::after { content: '–'; }
+  .faq details p { margin: 0 0 var(--space-3); }
+
+  .final-mark { margin: 0 auto var(--space-3); }
+
+  /* Mid screens */
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1.4fr 1fr; gap: clamp(24px, 4vw, 40px); }
+    .hero-photo { width: min(100%, 320px); }
+    .block { inset: 16px -16px -16px 16px; }
+    .signs { grid-template-columns: repeat(2, 1fr); }
+    .split { grid-template-columns: 1fr; gap: var(--space-2); }
+    .outcomes { grid-template-columns: repeat(2, 1fr); }
+    .offer { grid-template-columns: 1fr; }
+    .price { max-width: 460px; width: 100%; justify-self: center; }
+    .faq-grid { grid-template-columns: 1fr; gap: 0; }
+  }
+
+  /* Small screens: everything centred, single column, no photos */
+  @media (max-width: 720px) {
+    .hero { min-height: 0; }
+    .hero-grid, .steps, .signs, .included { grid-template-columns: 1fr; }
+    .hero-photo { display: none; }
+    .hero-copy, .head, .steps li { text-align: center; }
+    .hero-copy .lede { margin-inline: auto; }
+    .hero-copy .btn-row, .facts { justify-content: center; }
+    .signs { gap: var(--space-1); }
+    .signs li { align-items: center; text-align: center; padding: var(--space-2); font-size: 17px; }
+    .signs li img { display: none; }
+    .outcomes { grid-template-columns: repeat(2, 1fr); gap: var(--space-1); }
+    .outcomes li { flex-direction: column; justify-content: flex-start; text-align: center; padding: var(--space-2); font-size: 16px; gap: var(--space-1); }
+    .included li { flex-direction: column; align-items: center; text-align: center; }
+    .guarantee { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+    .seal { width: 128px; height: 128px; }
+    .seal img { width: 34px; height: auto; }
+    .stories-wrap.two :global(.track) { grid-auto-columns: 86%; }
+  }
+</style>
