@@ -1,0 +1,21 @@
+---
+// Placeholder frame for a photo Dianeris will send. Swap `src` in when the photo arrives.
+interface Props { src?: string; alt?: string; label?: string; ratio?: string; class?: string }
+const { src, alt = '', label = 'Photo coming soon', ratio = '4 / 5', class: cls } = Astro.props;
+---
+<figure class:list={['slot', cls]} style={`aspect-ratio:${ratio}`}>
+  {src ? (
+    <img src={src} alt={alt} loading="lazy" decoding="async" />
+  ) : (
+    <div class="empty" role="img" aria-label={label}>
+      <img src="/brand/leaf-mark.png" alt="" width="44" height="54" />
+      <span>{label}</span>
+    </div>
+  )}
+</figure>
+
+<style>
+  .slot { margin: 0; overflow: hidden; border-radius: var(--radius-none); background: var(--sage); }
+  .slot > img { width: 100%; height: 100%; object-fit: cover; }
+  .empty { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-1); color: var(--leaf-deep); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; }
+</style>

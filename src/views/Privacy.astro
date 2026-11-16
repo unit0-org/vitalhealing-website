@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import { t, type Lang } from '../i18n';
+import { site } from '../config';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const d = t(lang);
+const p = d.privacy;
+---
+<Base lang={lang} route="privacy" title={d.meta.privacy.title} description={d.meta.privacy.description}>
+  <section class="section">
+    <div class="container narrow">
+      <h1>{p.title}</h1>
+      <p class="updated">{p.updated}</p>
+      {p.sections.map((s) => (
+        <>
+          <h2>{s.h}</h2>
+          <p set:html={s.p.replaceAll('{email}', `<a href="mailto:${site.email}">${site.email}</a>`)} />
+        </>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  h2 { font-size: 24px; margin-top: var(--space-4); }
+  .updated { color: var(--leaf-deep); font-size: 15px; }
+  p :global(a) { overflow-wrap: anywhere; }
+</style>

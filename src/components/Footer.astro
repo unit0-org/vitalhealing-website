@@ -1,0 +1,73 @@
+---
+import { t, path, type Lang } from '../i18n';
+import { site } from '../config';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const d = t(lang);
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container signature">
+    <img src="/brand/submark.png" alt="Vital Healing Coaching" width="140" height="140" class="seal" loading="lazy" />
+    <p class="tagline">{d.footer.tagline}</p>
+  </div>
+  <div class="container grid">
+    <div>
+      <h2 class="h">{d.footer.explore}</h2>
+      <ul>
+        <li><a href={path('masterclass', lang)}>{d.nav.masterclass}</a></li>
+        <li><a href={path('about', lang)}>{d.nav.about}</a></li>
+        <li><a href={path('programMenopause', lang)}>{d.program.titles.programMenopause}</a></li>
+        <li><a href={path('programAutism', lang)}>{d.program.titles.programAutism}</a></li>
+        <li><a href={path('programVitality', lang)}>{d.program.titles.programVitality}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="h">{d.footer.contact}</h2>
+      <ul>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><a href={site.bookingUrl} target="_blank" rel="noopener">{d.nav.book}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="h">{d.footer.follow}</h2>
+      <ul class="social">
+        <li><a href={site.social.instagram} target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></svg>
+        </a></li>
+        <li><a href={site.social.facebook} target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v7h4v-7h3l1-4h-4V8.5c0-.3.2-.5.5-.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </a></li>
+        <li><a href={site.social.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10.5V17M8 7.2v.1M12 17v-3.8c0-1.6 1-2.7 2.4-2.7S16.5 11.6 16.5 13v4M12 10.5V17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container legal">
+    <p>© {year} Vital Healing · Dianeris Posada. {d.footer.rights} · <a href={path('privacy', lang)}>{d.footer.privacy}</a></p>
+    <p class="disclaimer">{d.footer.disclaimer}</p>
+  </div>
+</footer>
+
+<style>
+  .footer { border-top: 3px solid var(--line); background: var(--white); color: var(--slate); font-size: 16px; line-height: 24px; }
+  /* Seal + tagline centred together so they read as one signature */
+  .signature { display: flex; flex-direction: column; align-items: center; text-align: center; padding-block: var(--space-4) var(--space-3); }
+  .seal { width: 160px; height: 160px; margin-bottom: var(--space-2); }
+  .tagline { margin: 0; font-family: var(--font-display); font-style: italic; color: var(--forest); font-size: 21px; line-height: 32px; max-width: 26ch; }
+  .tagline::after { content: ''; display: block; width: 48px; height: 3px; background: var(--leaf); margin: var(--space-2) auto 0; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); padding-block: var(--space-3) var(--space-4); border-top: 2px solid var(--line); }
+  .h { font-family: var(--font-sans); font-weight: 700; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--leaf-deep); margin: 0 0 var(--space-1); }
+  ul { list-style: none; margin: 0 0 var(--space-3); padding: 0; }
+  li { margin-bottom: 6px; }
+  a { color: var(--forest); text-decoration: none; overflow-wrap: anywhere; }
+  a:hover { text-decoration: underline; }
+  .social { display: flex; gap: var(--space-2); }
+  .social a { display: inline-flex; width: 44px; height: 44px; align-items: center; justify-content: center; border: 2px solid var(--line); border-radius: 50%; }
+  .social a:hover { background: var(--sage); }
+  .legal { border-top: 2px solid var(--line); padding-block: var(--space-3); font-size: 14px; }
+  .legal p { margin: 0 0 6px; }
+  .legal a { color: var(--leaf-deep); text-decoration: underline; }
+  @media (max-width: 800px) { .grid { grid-template-columns: 1fr; gap: var(--space-3); } }
+</style>

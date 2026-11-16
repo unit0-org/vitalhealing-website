@@ -1,0 +1,32 @@
+---
+// Placeholder page for an individual program. Replace with real content when each program is defined.
+import Base from '../layouts/Base.astro';
+import { t, path, type Lang } from '../i18n';
+import { site } from '../config';
+type ProgramKey = 'programMenopause' | 'programAutism' | 'programVitality';
+interface Props { lang: Lang; program: ProgramKey }
+const { lang, program } = Astro.props;
+const d = t(lang);
+const p = d.program;
+const title = p.titles[program];
+---
+<Base lang={lang} route={program} title={`${title} · Vital Healing`} description={d.meta.program.description}>
+  <section class="section">
+    <div class="container narrow center">
+      <img src="/brand/leaf-mark.png" alt="" width="66" height="80" class="mark" />
+      <span class="eyebrow">{p.eyebrow} · {p.soon}</span>
+      <h1>{title}</h1>
+      <p class="lede">{p.text}</p>
+      <div class="btn-row row">
+        <a class="btn btn--marked" href={site.bookingUrl} target="_blank" rel="noopener">{p.cta}</a>
+        <a class="btn btn--ghost" href={path('home', lang)}>{p.back}</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .center { text-align: center; padding-block: clamp(32px, 8vw, 96px); }
+  .mark { margin: 0 auto var(--space-3); }
+  .row { justify-content: center; margin-top: var(--space-3); }
+</style>

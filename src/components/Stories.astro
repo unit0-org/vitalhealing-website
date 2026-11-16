@@ -1,0 +1,105 @@
+---
+// Testimonial carousel. Scroll-snap track + prev/next buttons; works with touch, keyboard and no JS.
+import { t, type Lang } from '../i18n';
+interface Props { lang: Lang; pick?: number[] }
+const { lang, pick } = Astro.props;
+const all = t(lang).stories;
+const items = (pick ?? all.map((_, i) => i)).map((i) => all[i]).filter(Boolean);
+
+// Client photos, by story index (same order as `stories` in es.ts / en.ts).
+// Drop the file in public/images/clients/ and add its path here. Empty = leaf placeholder.
+const photos: string[] = ['', '', '', ''];
+const photoFor = (s: (typeof all)[number]) => photos[all.indexOf(s)] ?? '';
+
+const labels = lang === 'es'
+  ? { region: 'Testimonios', prev: 'Testimonio anterior', next: 'Siguiente testimonio' }
+  : { region: 'Testimonials', prev: 'Previous testimonial', next: 'Next testimonial' };
+---
+<div class="carousel" role="region" aria-roledescription="carousel" aria-label={labels.region}>
+  <ul class="track" tabindex="0">
+    {items.map((s, i) => (
+      <li class="story" aria-roledescription="slide" aria-label={`${i + 1} / ${items.length}`}>
+        <p class="result">{s.result}</p>
+        <blockquote><p>“{s.quote}”</p></blockquote>
+        <div class="who">
+          <span class="avatar">
+            {photoFor(s)
+              ? <img src={photoFor(s)} alt="" width="64" height="64" loading="lazy" />
+              : <img src="/brand/leaf-mark.png" alt="" width="22" height="27" class="leaf" />}
+          </span>
+          <p><strong>{s.name}</strong><span>{s.detail}</span></p>
+        </div>
+      </li>
+    ))}
+  </ul>
+  <div class="controls">
+    <button type="button" class="nav prev" aria-label={labels.prev}>
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="dots" aria-hidden="true">{items.map(() => <span></span>)}</div>
+    <button type="button" class="nav next" aria-label={labels.next}>
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.carousel').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('.track')!;
+    const slides = [...track.children] as HTMLElement[];
+    const prev = root.querySelector<HTMLButtonElement>('.prev')!;
+    const next = root.querySelector<HTMLButtonElement>('.next')!;
+    const dots = [...root.querySelectorAll<HTMLElement>('.dots span')];
+    const step = () => slides[1] ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth;
+
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      root.classList.toggle('static', max <= 2);
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max - 2;
+      const visible = Math.max(1, Math.round(track.clientWidth / step()));
+      const first = Math.round(track.scrollLeft / step());
+      dots.forEach((d, i) => d.classList.toggle('on', i >= first && i < first + visible));
+    };
+    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+    track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+</script>
+
+<style>
+  .track {
+    --gap: var(--space-3);
+    list-style: none; margin: 0; padding: 0 0 var(--space-1);
+    display: grid; grid-auto-flow: column; gap: var(--gap);
+    grid-auto-columns: calc((100% - 2 * var(--gap)) / 3);
+    overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+  .track::-webkit-scrollbar { display: none; }
+  @media (prefers-reduced-motion: reduce) { .track { scroll-behavior: auto; } }
+  .story { scroll-snap-align: start; background: var(--white); border-radius: var(--radius-md); padding: var(--space-3); display: flex; flex-direction: column; }
+  .result { font-family: var(--font-display); color: var(--forest); font-size: 22px; line-height: 30px; margin-bottom: var(--space-2); padding-bottom: var(--space-2); border-bottom: 3px solid var(--line); }
+  blockquote { margin: 0 0 var(--space-3); flex: 1; }
+  blockquote p { margin: 0; font-size: 17px; line-height: 27px; }
+  .who { display: flex; align-items: center; gap: var(--space-2); }
+  .avatar { flex: none; width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: var(--sage); display: grid; place-items: center; }
+  .avatar img:not(.leaf) { width: 100%; height: 100%; object-fit: cover; }
+  .who p { margin: 0; display: flex; flex-direction: column; font-size: 15px; line-height: 22px; }
+  .who strong { color: var(--forest); }
+  .who span { color: var(--leaf-deep); }
+
+  .controls { display: flex; align-items: center; justify-content: center; gap: var(--space-2); margin-top: var(--space-3); }
+  .static .controls { display: none; }
+  .nav { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--forest); background: transparent; color: var(--forest); display: grid; place-items: center; cursor: pointer; transition: background-color .2s, color .2s; }
+  .nav:hover:not(:disabled) { background: var(--forest); color: var(--white); }
+  .nav:disabled { opacity: .35; cursor: default; }
+  .dots { display: flex; gap: 8px; }
+  .dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--line); transition: background-color .2s, width .2s; }
+  .dots span.on { background: var(--forest); }
+
+  @media (max-width: 960px) { .track { grid-auto-columns: calc((100% - var(--gap)) / 2); } }
+  @media (max-width: 640px) { .track { --gap: var(--space-2); grid-auto-columns: 86%; } }
+</style>

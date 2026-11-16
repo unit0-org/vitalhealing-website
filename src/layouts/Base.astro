@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { routes, otherLang, type Lang, type RouteKey } from '../i18n';
+import { site } from '../config';
+
+interface Props {
+  lang: Lang;
+  route: RouteKey;
+  title: string;
+  description: string;
+  image?: string;
+}
+const { lang, route, title, description, image = '/images/dianeris-portrait.webp' } = Astro.props;
+const alt = otherLang(lang);
+const canonical = new URL(routes[route][lang], site.url).href;
+const altHref = new URL(routes[route][alt], site.url).href;
+const esHref = new URL(routes[route].es, site.url).href;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={lang} href={canonical} />
+    <link rel="alternate" hreflang={alt} href={altHref} data-alt-lang={alt} />
+    <link rel="alternate" hreflang="x-default" href={esHref} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#2f5748" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, site.url).href} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_CA'} />
+    <!--
+      Language rule: on the very first visit (no saved choice) pick the browser language and,
+      if it differs from this page, jump to the same page in that language. Once a choice is
+      saved (automatically or with the switcher), never redirect again.
+    -->
+    <script is:inline>
+      (function () {
+        var KEY = 'vh-lang';
+        var saved;
+        try { saved = localStorage.getItem(KEY); } catch (e) { return; }
+        if (saved) return;
+        if (/bot|crawl|spider|slurp|lighthouse|headless|preview/i.test(navigator.userAgent)) return;
+        var first = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+        var detected = first.indexOf('es') === 0 ? 'es' : 'en';
+        try { localStorage.setItem(KEY, detected); } catch (e) {}
+        var page = document.documentElement.lang;
+        var alt = document.querySelector('link[data-alt-lang="' + detected + '"]');
+        if (detected !== page && alt) location.replace(alt.getAttribute('href').replace(/^https?:\/\/[^/]+/, '') + location.hash);
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{lang === 'es' ? 'Saltar al contenido' : 'Skip to content'}</a>
+    <Header lang={lang} route={route} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <script>
+      // Remember an explicit language choice made with the switcher.
+      document.querySelectorAll<HTMLAnchorElement>('[data-set-lang]').forEach((a) => {
+        a.addEventListener('click', () => {
+          try { localStorage.setItem('vh-lang', a.dataset.setLang!); } catch {}
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+---
+import { t, path, routes, otherLang, type Lang, type RouteKey } from '../i18n';
+interface Props { lang: Lang; route: RouteKey }
+const { lang, route } = Astro.props;
+const d = t(lang);
+const alt = otherLang(lang);
+const links: { key: RouteKey; label: string }[] = [
+  { key: 'home', label: d.nav.home },
+  { key: 'masterclass', label: d.nav.masterclass },
+  { key: 'about', label: d.nav.about },
+];
+---
+<header class="header">
+  <div class="container bar">
+    <a class="brand" href={path('home', lang)} aria-label="Vital Healing">
+      <img src="/brand/leaf-mark.png" alt="" width="26" height="32" />
+      <span class="wordmark">Vital Healing</span>
+    </a>
+
+    <button class="toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="visually-hidden">{d.nav.menu}</span>
+      <span class="bars" aria-hidden="true"></span>
+    </button>
+
+    <nav id="site-nav" class="nav" aria-label={d.nav.menu}>
+      <ul>
+        {links.map((l) => (
+          <li>
+            <a href={path(l.key, lang)} aria-current={l.key === route ? 'page' : undefined}>{l.label}</a>
+          </li>
+        ))}
+      </ul>
+      <a class="lang" href={routes[route][alt]} hreflang={alt} data-set-lang={alt} title={d.switchTo}>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        <span aria-hidden="true">{d.langShort}</span>
+        <span class="visually-hidden" lang={alt}>{d.switchTo}</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.header .toggle');
+  const nav = document.getElementById('site-nav');
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    nav?.classList.toggle('open', !open);
+  });
+</script>
+
+<style>
+  .header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--cream) 94%, transparent); backdrop-filter: blur(8px); border-bottom: 2px solid var(--line); }
+  .bar { display: flex; align-items: center; justify-content: space-between; min-height: 72px; gap: var(--space-2); }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+  .wordmark { font-family: var(--font-display); font-size: 21px; color: var(--forest); letter-spacing: 0.01em; }
+  .nav { display: flex; align-items: center; gap: var(--space-3); }
+  .nav ul { display: flex; gap: var(--space-3); list-style: none; margin: 0; padding: 0; }
+  .nav ul a { color: var(--forest); text-decoration: none; font-size: 16px; font-weight: 700; padding-block: 6px; border-bottom: 2px solid transparent; }
+  .nav ul a:hover, .nav ul a[aria-current='page'] { border-bottom-color: var(--leaf); }
+  /* Shows only the current language; one click switches to the other */
+  .lang { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding-inline: 12px; border: 2px solid var(--line); border-radius: 999px; font-size: 14px; font-weight: 700; letter-spacing: 0.1em; color: var(--forest); text-decoration: none; transition: background-color .2s; }
+  .lang:hover { background: var(--sage); }
+  .toggle { display: none; background: none; border: 0; padding: 10px; cursor: pointer; }
+  .bars, .bars::before, .bars::after { display: block; width: 24px; height: 2px; background: var(--forest); position: relative; transition: transform .2s; }
+  .bars::before, .bars::after { content: ''; position: absolute; left: 0; }
+  .bars::before { top: -7px; } .bars::after { top: 7px; }
+  .toggle[aria-expanded='true'] .bars { background: transparent; }
+  .toggle[aria-expanded='true'] .bars::before { transform: translateY(7px) rotate(45deg); }
+  .toggle[aria-expanded='true'] .bars::after { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 900px) {
+    .toggle { display: block; }
+    .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream); border-bottom: 2px solid var(--line); flex-direction: column; align-items: stretch; padding: var(--space-2) var(--gutter) var(--space-3); gap: var(--space-2); }
+    .nav.open { display: flex; }
+    .nav ul { flex-direction: column; gap: 0; }
+    .nav ul a { display: block; padding-block: 12px; font-size: 18px; border-bottom: 1px solid var(--line); }
+    .lang { align-self: flex-start; }
+  }
+</style>

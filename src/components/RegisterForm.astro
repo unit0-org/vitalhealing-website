@@ -1,0 +1,81 @@
+---
+import { t, path, type Lang } from '../i18n';
+import { masterclass, site } from '../config';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const f = t(lang).masterclass.form;
+const connected = Boolean(masterclass.formAction);
+---
+<form
+  class="register"
+  id="register"
+  method="post"
+  action={connected ? masterclass.formAction : undefined}
+  data-connected={connected ? 'true' : 'false'}
+  data-email={site.email}
+  data-subject={f.mailtoSubject}
+  data-body={f.mailtoBody}
+>
+  <h2 class="title">{f.title}</h2>
+  <input type="hidden" name="language" value={lang} />
+  <input type="hidden" name="source" value="website-masterclass" />
+  <div class="row">
+    <label>
+      <span>{f.firstName}</span>
+      <input name="first_name" type="text" autocomplete="given-name" required />
+    </label>
+    <label>
+      <span>{f.lastName}</span>
+      <input name="last_name" type="text" autocomplete="family-name" required />
+    </label>
+  </div>
+  <label>
+    <span>{f.email}</span>
+    <input name="email" type="email" autocomplete="email" required />
+  </label>
+  <label>
+    <span>{f.phone}</span>
+    <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required />
+  </label>
+  <button class="btn btn--marked" type="submit">{f.submit}</button>
+  <p class="fine">
+    {f.consent} <a href={path('privacy', lang)}>{f.privacy}</a>.
+    {!connected && <><br />{f.fallbackNote}</>}
+  </p>
+</form>
+
+<script>
+  // Put the cursor in the first field: on load when the form is already on screen (desktop hero),
+  // or when a "#register" link brings the visitor to it. Never scrolls the page on its own.
+  const form = document.getElementById('register');
+  const first = form?.querySelector<HTMLInputElement>('input:not([type="hidden"])');
+  const focusFirst = () => first?.focus({ preventScroll: true });
+  const onScreen = () => { const r = form!.getBoundingClientRect(); return r.top >= 0 && r.top < innerHeight * 0.6; };
+  if (first) {
+    if (location.hash === '#register' || onScreen()) focusFirst();
+    addEventListener('hashchange', () => { if (location.hash === '#register') setTimeout(focusFirst, 400); });
+    document.querySelectorAll('a[href="#register"]').forEach((a) => a.addEventListener('click', () => setTimeout(focusFirst, 400)));
+  }
+
+  // No form endpoint configured yet: open a pre-filled email to Dianeris so no sign-up is lost.
+  document.querySelectorAll<HTMLFormElement>('form.register[data-connected="false"]').forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const body = `${form.dataset.body}\n\n${data.get('first_name')} ${data.get('last_name')}\n${data.get('email')}\n${data.get('phone')}`;
+      location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(form.dataset.subject!)}&body=${encodeURIComponent(body)}`;
+    });
+  });
+</script>
+
+<style>
+  .register { background: var(--white); border-radius: var(--radius-md); padding: var(--space-3); display: grid; gap: 14px; color: var(--slate); }
+  .title { font-size: 26px; line-height: 1.2; margin: 0 0 4px; color: var(--ink); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
+  @media (max-width: 420px) { .row { grid-template-columns: 1fr; } }
+  label { display: grid; gap: 6px; font-size: 15px; font-weight: 700; color: var(--forest); }
+  input { font: 400 17px/1.4 var(--font-sans); color: var(--forest); padding: 10px 14px; min-height: 46px; border: 2px solid var(--slate); border-radius: var(--radius-sm); background: var(--white); width: 100%; }
+  input:focus-visible { outline: 3px solid var(--leaf); outline-offset: 1px; border-color: var(--forest); }
+  .btn { width: 100%; margin: 6px 0 var(--space-1); }
+  .fine { font-size: 13px; line-height: 19px; margin: 0; }
+</style>

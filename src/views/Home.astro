@@ -1,0 +1,149 @@
+---
+import Base from '../layouts/Base.astro';
+import Stories from '../components/Stories.astro';
+import PhotoSlot from '../components/PhotoSlot.astro';
+import { t, path, type Lang, type RouteKey } from '../i18n';
+import { site } from '../config';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const d = t(lang);
+const h = d.home;
+const soon = lang === 'es' ? 'Foto próximamente' : 'Photo coming soon';
+---
+<Base lang={lang} route="home" title={d.meta.home.title} description={d.meta.home.description}>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>{h.hero.titleStart} <span class="accent">{h.hero.titleAccent}</span> <mark class="mark">{h.hero.titleMark}</mark>{h.hero.titleEnd}</h1>
+        <p class="lede">{h.hero.sub}</p>
+        <div class="btn-row">
+          <a class="btn btn--marked" href={path('masterclass', lang)}>{h.hero.ctaPrimary}</a>
+          <a class="btn btn--ghost" href={path('about', lang)}>{h.hero.ctaSecondary}</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="block" aria-hidden="true"></div>
+        <img src="/images/dianeris-portrait.webp" alt={h.hero.photoAlt} width="897" height="1024" fetchpriority="high" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Truth -->
+  <section class="section section--white">
+    <div class="container narrow center">
+      <h2 class="truth">{h.truth.line1Start} <mark class="mark">{h.truth.line1Mark}</mark>{h.truth.line1End}<br /><span class="accent">{h.truth.line2}</span></h2>
+      <p class="lede">{h.truth.text}</p>
+    </div>
+  </section>
+
+  <!-- Masterclass CTA -->
+  <section class="section section--forest" id="masterclass">
+    <div class="container mc">
+      <div>
+        <span class="eyebrow">{h.masterclass.eyebrow}</span>
+        <h2>{h.masterclass.title}</h2>
+        <p class="lede">{h.masterclass.text}</p>
+      </div>
+      <div class="mc-action">
+        <a class="btn btn--light btn--marked" href={path('masterclass', lang)}>{h.masterclass.cta}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who Dianeris helps -->
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">{h.who.eyebrow}</span>
+      <h2>{h.who.title}</h2>
+      <ul class="who">
+        {h.who.cards.map((c, i) => (
+          <li class={`who-card tone-${['sage', 'sand', 'mist'][i]}`}>
+            <PhotoSlot ratio="3 / 2" label={soon} class="who-photo" />
+            <div class="who-body">
+              <h3>{c.title}</h3>
+              <p>{c.text}</p>
+              <a class="btn btn--ghost" href={path(c.key as RouteKey, lang)}>{c.cta}</a>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- About (short) -->
+  <section class="section section--sage">
+    <div class="container about">
+      <PhotoSlot src="/images/dianeris-round.webp" alt={h.hero.photoAlt} ratio="1 / 1" class="about-photo" />
+      <div>
+        <span class="eyebrow">{h.about.eyebrow}</span>
+        <h2>{h.about.title}</h2>
+        {h.about.paras.map((p) => <p>{p}</p>)}
+        <a class="btn" href={path('about', lang)}>{h.about.cta}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success stories -->
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">{h.stories.eyebrow}</span>
+      <h2>{h.stories.title}</h2>
+      <div class="stories-wrap"><Stories lang={lang} /></div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section section--white">
+    <div class="container narrow center">
+      <h2>{h.final.title}</h2>
+      <p class="lede">{h.final.text}</p>
+      <a class="btn btn--marked" href={site.bookingUrl} target="_blank" rel="noopener">{h.final.cta}</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* First fold: hero fills the screen under the 74px header, photo height follows the viewport */
+  .hero { --fold: calc(100svh - 74px); min-height: var(--fold); display: flex; align-items: center; padding-block: clamp(32px, 5vh, 64px); overflow: hidden; }
+  .hero h1 { font-size: clamp(36px, min(5vw, 7.4vh), 60px); }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+  .hero-copy .lede { max-width: 34em; margin-bottom: var(--space-4); }
+  .hero-photo { position: relative; justify-self: end; width: min(100%, 440px, calc((var(--fold) - 2 * clamp(32px, 5vh, 64px) - 24px) * 0.8)); }
+  .hero-photo img { position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%; }
+  .block { position: absolute; inset: 24px -24px -24px 24px; background: var(--leaf); }
+
+  .center { text-align: center; }
+  .center .btn { margin-top: var(--space-2); }
+  .truth { font-size: clamp(32px, 4.4vw, 50px); margin-bottom: var(--space-3); }
+
+  .mc { display: grid; grid-template-columns: 1.6fr 1fr; gap: var(--space-4); align-items: center; }
+  .mc .lede { color: var(--on-forest); margin: 0; }
+  .mc-action { justify-self: end; }
+
+  .who { list-style: none; padding: 0; margin: var(--space-4) 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+  /* Each program gets its own tint so the three paths read as different (sage / sand / mist) */
+  .who-card { --tone: var(--sage); --tone-deep: var(--leaf); background: var(--tone); border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column; }
+  .who-card.tone-sand { --tone: var(--sand); --tone-deep: var(--sand-deep); }
+  .who-card.tone-mist { --tone: var(--mist); --tone-deep: var(--slate); }
+  .who-card :global(.who-photo) { background: color-mix(in srgb, var(--tone-deep) 18%, var(--tone)); border-bottom: 6px solid var(--tone-deep); }
+  .who-card .btn--ghost:hover { background: var(--forest); }
+  .who-body { padding: var(--space-3); display: flex; flex-direction: column; flex: 1; }
+  .who-body p { flex: 1; margin-bottom: var(--space-3); }
+  .who-body .btn { align-self: flex-start; }
+
+  .about { display: grid; grid-template-columns: 380px 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+  .about :global(.about-photo) { background: transparent; }
+  .about .btn { margin-top: var(--space-1); }
+
+  .stories-wrap { margin-top: var(--space-4); }
+
+  @media (max-width: 960px) {
+    .hero-grid, .mc, .about { grid-template-columns: 1fr; }
+    .hero { min-height: 0; }
+    .hero-photo { justify-self: center; width: min(100%, 380px); margin-right: 24px; }
+    .mc-action { justify-self: start; }
+    .who { grid-template-columns: 1fr; }
+    .about :global(.about-photo) { max-width: 300px; }
+  }
+</style>

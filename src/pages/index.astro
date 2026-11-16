@@ -1,0 +1,48 @@
+---
+// Root: send visitors to their language. Saved choice wins; otherwise use the browser language.
+import '../styles/global.css';
+import { site } from '../config';
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vital Healing · Sanación Vital</title>
+    <meta name="description" content="Vital Healing · Dianeris Posada" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="alternate" hreflang="es" href={new URL('/es/', site.url).href} />
+    <link rel="alternate" hreflang="en" href={new URL('/en/', site.url).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/es/', site.url).href} />
+    <script is:inline>
+      (function () {
+        var KEY = 'vh-lang', lang;
+        try { lang = localStorage.getItem(KEY); } catch (e) {}
+        if (lang !== 'es' && lang !== 'en') {
+          var first = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+          lang = first.indexOf('es') === 0 ? 'es' : 'en';
+          try { localStorage.setItem(KEY, lang); } catch (e) {}
+        }
+        location.replace('/' + lang + '/');
+      })();
+    </script>
+    <style>
+      body { min-height: 100vh; display: grid; place-items: center; text-align: center; }
+      .links { display: flex; gap: 16px; justify-content: center; margin-top: 24px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img src="/brand/logo-vh.png" alt="Vital Healing · Sanación Vital" width="200" height="200" style="margin:0 auto" />
+      <div class="links">
+        <a class="btn" href="/es/" data-set-lang="es">Español</a>
+        <a class="btn btn--ghost" href="/en/" data-set-lang="en">English</a>
+      </div>
+    </main>
+    <script is:inline>
+      document.querySelectorAll('[data-set-lang]').forEach(function (a) {
+        a.addEventListener('click', function () { try { localStorage.setItem('vh-lang', a.dataset.setLang); } catch (e) {} });
+      });
+    </script>
+  </body>
+</html>
