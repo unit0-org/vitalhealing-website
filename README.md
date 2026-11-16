@@ -20,6 +20,16 @@ npm run build     # output in dist/
 
 `/` sends visitors to their language (browser language on first visit, then their saved choice).
 
+## Hosting (Cloudflare, free plan)
+
+The site is static and served by Cloudflare Workers static assets (`wrangler.jsonc`).
+
+- Account: Abel's Cloudflare account for now (pinned by `account_id` in `wrangler.jsonc`). First time on a machine: `npx wrangler login`.
+- Deploy: `npm run deploy` (builds, then uploads `dist/`). Live at https://vitalhealing-website.vitalhealing-website.workers.dev.
+- Preview without going live: `npm run deploy:preview`.
+- Custom domain: in Cloudflare, Workers & Pages → vitalhealing-website → Settings → Domains & Routes (the domain must be on Cloudflare DNS).
+- Sign-ups will go to the CRM's public site API once it exists (see `src/config.ts` → `masterclass.formAction`).
+
 ## Before launch
 
 - [ ] **Photos:** replace `public/images/dianeris-*.webp` (taken from the old site) with the new shoot, and fill the "Photo coming soon" slots (`PhotoSlot` in `src/views/Home.astro`).

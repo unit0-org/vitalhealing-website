@@ -1,0 +1,13 @@
+{
+  // Cloudflare Workers, static assets only (free plan). `npm run deploy` builds and uploads dist/.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "vitalhealing-website",
+  // Abel's Cloudflare account (The Execution Lab) for now. Move to a VitalHealing-owned account later: change this id.
+  "account_id": "a05364eb377780ca52e88f843c0b023b",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}
