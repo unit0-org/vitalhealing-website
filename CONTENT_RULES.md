@@ -48,7 +48,8 @@ Inspiration: Megan Winter (meganwinter.com.au). Simple, direct, personal, warm.
 - **Hero:** must fit the first screen (photo height follows the viewport) on desktop.
 - **Masterclass form:** first name, last name, email and phone, all required.
 - **Testimonials** use the carousel (`src/components/Stories.astro`). A new one goes in `stories` in both `es.ts` and `en.ts`, and its photo path goes in the `photos` list in the same order.
-- **Photos:** real photos of Dianeris, her clients and spaces only: natural light, outdoors, greenery, sage/cream/neutral tones. Until photos arrive, use `PhotoSlot` (the sage "Photo coming soon" frame), never stock people.
+- **Photos:** real photos of Dianeris, her clients and spaces: natural light, outdoors, greenery, sage/cream/neutral tones. Until photos arrive, use `PhotoSlot` (the sage "Photo coming soon" frame), never stock people.
+  - **Exception: AI illustrative photos on the program cards only** (`public/images/program-*.webp`, approved 2026-11-16). They show a type of person, never a named client. Never use them next to a testimonial, in a story, or as a photo of Dianeris. Replace them with real photos when they arrive.
 - **Accessibility:** text contrast 4.5:1 minimum, visible focus rings, alt text on every meaningful image, 44px minimum tap targets, layout works at 360px wide with no horizontal scroll.
 
 ## 4. Where things live

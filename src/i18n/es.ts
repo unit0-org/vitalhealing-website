@@ -77,18 +77,21 @@ const es = {
       cards: [
         {
           key: 'programMenopause',
+          photoAlt: 'Mujer sonriendo con una taza de té en un jardín',
           title: 'Mujeres en perimenopausia y menopausia',
           text: 'Sofocos, insomnio, niebla mental, un peso que no se mueve. Es común, pero no es “cosa de la edad”. Dianeris te ayuda a descubrir qué necesita tu cuerpo y a recuperar tu energía.',
           cta: 'Ver el programa',
         },
         {
           key: 'programAutism',
+          photoAlt: 'Mamá e hijo compartiendo un plato de fruta y verduras en la cocina',
           title: 'Familias con niños autistas',
           text: 'Comidas que son una batalla, un niño que come muy pocas cosas y una mamá que ya no puede más. Dianeris acompaña la nutrición del niño y también a la mamá.',
           cta: 'Ver el programa',
         },
         {
           key: 'programVitality',
+          photoAlt: 'Pareja caminando y riendo por un sendero en el bosque',
           title: 'Quien quiere sentirse increíble',
           text: '“Estar bien” no es lo mismo que sentirse increíble. Si quieres más energía, dormir mejor y vivir con plenitud, Dianeris te muestra cómo, paso a paso.',
           cta: 'Ver el programa',
@@ -377,8 +380,8 @@ const es = {
       titleEnd: ' sentirse así.',
       sub: 'Reseteo Hormonal es el programa de 8 semanas de Dianeris Posada para mujeres en perimenopausia y menopausia. Empieza con un análisis de minerales, te da un plan hecho para tu cuerpo y te acompaña cada semana, en español.',
       facts: ['8 semanas', 'En línea y en español', 'Grupos de 20 mujeres'],
-      ctaPrimary: 'Agenda tu llamada gratis',
-      ctaSecondary: 'Ver qué incluye',
+      ctaPrimary: 'Inscríbete en Reseteo Hormonal',
+      ctaSecondary: 'Únete a la masterclass gratuita',
     },
     signs: {
       eyebrow: '¿Te suena?',
@@ -438,12 +441,15 @@ const es = {
       price: '$697 CAD',
       priceTerms: '+ GST · Pago único',
       priceDetail: 'Grupos de 20 mujeres. Empieza un grupo nuevo dos veces al mes.',
-      cta: 'Agenda tu llamada gratis',
-      ctaNote: 'En una llamada de 20 minutos, Dianeris te explica el programa y te ayuda a ver si es para ti.',
+      cta: 'Inscríbete en Reseteo Hormonal',
+      ctaNote: '¿Aún no estás segura?',
+      ctaNoteLink: 'Empieza con la masterclass gratuita',
     },
     guarantee: {
       eyebrow: 'Garantía',
-      title: 'Si no te sientes mejor, te devuelve tu dinero.',
+      titleStart: 'Si no te sientes mejor, ',
+      titleMark: 'te devuelve tu dinero',
+      titleEnd: '.',
       text: 'Asiste a las 8 clases en vivo y sigue tu protocolo. Si al final de la semana 8 no te sientes mejor, Dianeris te devuelve el 100 %. El riesgo lo asume ella, no tú.',
     },
     stories: {
@@ -465,9 +471,9 @@ const es = {
     },
     final: {
       title: 'Esta etapa puede sentirse mejor.',
-      text: 'Cuéntale a Dianeris lo que estás viviendo. La llamada es gratis y dura 20 minutos.',
-      cta: 'Agenda tu llamada gratis',
-      secondary: 'O empieza con la masterclass gratuita',
+      text: 'Reserva tu lugar en el próximo grupo. ¿Aún no estás segura? En la masterclass gratuita, Dianeris te explica qué hay detrás de tus síntomas.',
+      cta: 'Inscríbete en Reseteo Hormonal',
+      secondary: 'Únete a la masterclass gratuita',
     },
   },
 
