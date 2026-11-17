@@ -45,18 +45,6 @@ const connected = Boolean(masterclass.formAction);
 </form>
 
 <script>
-  // Put the cursor in the first field: on load when the form is already on screen (desktop hero),
-  // or when a "#register" link brings the visitor to it. Never scrolls the page on its own.
-  const form = document.getElementById('register');
-  const first = form?.querySelector<HTMLInputElement>('input:not([type="hidden"])');
-  const focusFirst = () => first?.focus({ preventScroll: true });
-  const onScreen = () => { const r = form!.getBoundingClientRect(); return r.top >= 0 && r.top < innerHeight * 0.6; };
-  if (first) {
-    if (location.hash === '#register' || onScreen()) focusFirst();
-    addEventListener('hashchange', () => { if (location.hash === '#register') setTimeout(focusFirst, 400); });
-    document.querySelectorAll('a[href="#register"]').forEach((a) => a.addEventListener('click', () => setTimeout(focusFirst, 400)));
-  }
-
   // No form endpoint configured yet: open a pre-filled email to Dianeris so no sign-up is lost.
   document.querySelectorAll<HTMLFormElement>('form.register[data-connected="false"]').forEach((form) => {
     form.addEventListener('submit', (e) => {

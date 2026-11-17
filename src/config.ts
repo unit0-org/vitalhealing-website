@@ -14,6 +14,13 @@ export const site = {
   },
 };
 
+export const programs = {
+  menopause: {
+    // Hormone Reset sign-up / checkout link. Empty = the sign-up buttons open the free 20-minute call (site.bookingUrl).
+    registerUrl: '',
+  },
+};
+
 export const masterclass = {
   // ISO date-time with offset, e.g. '2027-01-21T18:00:00-08:00'. null shows "date coming soon".
   date: null as string | null,

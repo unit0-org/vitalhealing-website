@@ -3,13 +3,15 @@
 import Base from '../layouts/Base.astro';
 import Stories from '../components/Stories.astro';
 import VideoStory from '../components/VideoStory.astro';
+import { programs, site } from '../config';
 import { t, path, type Lang } from '../i18n';
-import { site } from '../config';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const d = t(lang);
 const m = d.menopause;
 const includedId = lang === 'es' ? 'incluye' : 'included';
+// Sign-up link for the program; falls back to the free call until the checkout link exists (src/config.ts).
+const registerUrl = programs.menopause.registerUrl || site.bookingUrl;
 ---
 <Base lang={lang} route="programMenopause" title={d.meta.menopause.title} description={d.meta.menopause.description}>
   <!-- Hero -->
@@ -20,8 +22,8 @@ const includedId = lang === 'es' ? 'incluye' : 'included';
         <h1>{m.hero.titleStart} <mark class="mark">{m.hero.titleMark}</mark>{m.hero.titleEnd}</h1>
         <p class="lede">{m.hero.sub}</p>
         <div class="btn-row">
-          <a class="btn btn--marked" href={site.bookingUrl} target="_blank" rel="noopener">{m.hero.ctaPrimary}</a>
-          <a class="btn btn--ghost" href={`#${includedId}`}>{m.hero.ctaSecondary}</a>
+          <a class="btn btn--marked" href={registerUrl}>{m.hero.ctaPrimary}</a>
+          <a class="btn btn--ghost" href={path('masterclass', lang)}>{m.hero.ctaSecondary}</a>
         </div>
         <ul class="facts">
           {m.hero.facts.map((f) => (
@@ -117,8 +119,8 @@ const includedId = lang === 'es' ? 'incluye' : 'included';
           <p class="amount">{m.included.price}</p>
           <p class="terms">{m.included.priceTerms}</p>
           <p class="detail">{m.included.priceDetail}</p>
-          <a class="btn btn--marked" href={site.bookingUrl} target="_blank" rel="noopener">{m.included.cta}</a>
-          <p class="cta-note">{m.included.ctaNote}</p>
+          <a class="btn btn--marked" href={registerUrl}>{m.included.cta}</a>
+          <p class="cta-note">{m.included.ctaNote} <a href={path('masterclass', lang)}>{m.included.ctaNoteLink}</a></p>
         </aside>
       </div>
     </div>
@@ -133,7 +135,7 @@ const includedId = lang === 'es' ? 'incluye' : 'included';
       </div>
       <div>
         <span class="eyebrow">{m.guarantee.eyebrow}</span>
-        <h2>{m.guarantee.title}</h2>
+        <h2>{m.guarantee.titleStart}<mark class="mark">{m.guarantee.titleMark}</mark>{m.guarantee.titleEnd}</h2>
         <p class="lede">{m.guarantee.text}</p>
       </div>
     </div>
@@ -177,7 +179,7 @@ const includedId = lang === 'es' ? 'incluye' : 'included';
       <h2>{m.final.title}</h2>
       <p class="lede">{m.final.text}</p>
       <div class="btn-row">
-        <a class="btn btn--marked" href={site.bookingUrl} target="_blank" rel="noopener">{m.final.cta}</a>
+        <a class="btn btn--marked" href={registerUrl}>{m.final.cta}</a>
         <a class="btn btn--ghost" href={path('masterclass', lang)}>{m.final.secondary}</a>
       </div>
     </div>

@@ -78,18 +78,21 @@ const en: Dict = {
       cards: [
         {
           key: 'programMenopause',
+          photoAlt: 'Woman smiling with a cup of tea in a garden',
           title: 'Women in perimenopause and menopause',
           text: 'Hot flashes, sleepless nights, brain fog, weight that won’t shift. It’s common, but it isn’t “just your age”. Dianeris helps you find out what your body needs and get your energy back.',
           cta: 'See the program',
         },
         {
           key: 'programAutism',
+          photoAlt: 'Mother and son sharing a plate of fruit and vegetables in the kitchen',
           title: 'Families with autistic children',
           text: 'Mealtimes that feel like a battle, a child who eats only a handful of foods, and a mom who is running on empty. Dianeris supports the child’s nutrition, and the mom too.',
           cta: 'See the program',
         },
         {
           key: 'programVitality',
+          photoAlt: 'Couple laughing on a forest trail',
           title: 'Anyone who wants to feel great',
           text: '“Fine” isn’t the same as feeling great. If you want more energy, better sleep and a fuller life, Dianeris shows you how, step by step.',
           cta: 'See the program',
@@ -378,8 +381,8 @@ const en: Dict = {
       titleEnd: ' feel like this.',
       sub: 'Hormone Reset is Dianeris Posada’s 8-week program for women in perimenopause and menopause. It starts with a mineral test, gives you a plan made for your body, and walks with you every week, in Spanish.',
       facts: ['8 weeks', 'Online, in Spanish', 'Groups of 20 women'],
-      ctaPrimary: 'Book your free call',
-      ctaSecondary: 'See what’s included',
+      ctaPrimary: 'Sign up for Hormone Reset',
+      ctaSecondary: 'Join the free masterclass',
     },
     signs: {
       eyebrow: 'Sound familiar?',
@@ -439,12 +442,15 @@ const en: Dict = {
       price: '$697 CAD',
       priceTerms: '+ GST · One payment',
       priceDetail: 'Groups of 20 women. A new group starts twice a month.',
-      cta: 'Book your free call',
-      ctaNote: 'In a 20-minute call, Dianeris walks you through the program and helps you see if it’s right for you.',
+      cta: 'Sign up for Hormone Reset',
+      ctaNote: 'Not sure yet?',
+      ctaNoteLink: 'Start with the free masterclass',
     },
     guarantee: {
       eyebrow: 'Guarantee',
-      title: 'If you don’t feel better, you get your money back.',
+      titleStart: 'If you don’t feel better, ',
+      titleMark: 'you get your money back',
+      titleEnd: '.',
       text: 'Attend all 8 live classes and follow your protocol. If you don’t feel better by the end of week 8, Dianeris gives you a full refund. She carries the risk, not you.',
     },
     stories: {
@@ -466,9 +472,9 @@ const en: Dict = {
     },
     final: {
       title: 'This chapter can feel better.',
-      text: 'Tell Dianeris what you’re going through. The call is free and takes 20 minutes.',
-      cta: 'Book your free call',
-      secondary: 'Or start with the free masterclass',
+      text: 'Save your spot in the next group. Not sure yet? In the free masterclass, Dianeris explains what’s behind your symptoms.',
+      cta: 'Sign up for Hormone Reset',
+      secondary: 'Join the free masterclass',
     },
   },
 

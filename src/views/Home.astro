@@ -10,6 +10,8 @@ const { lang } = Astro.props;
 const d = t(lang);
 const h = d.home;
 const soon = lang === 'es' ? 'Foto próximamente' : 'Photo coming soon';
+// Program card photos (AI illustrative, see CONTENT_RULES.md). Set a slot to undefined to show the placeholder.
+const cardPhotos = ['/images/program-menopause.webp', '/images/program-autism.webp', '/images/program-vitality.webp'];
 ---
 <Base lang={lang} route="home" title={d.meta.home.title} description={d.meta.home.description}>
   <!-- Hero -->
@@ -60,7 +62,7 @@ const soon = lang === 'es' ? 'Foto próximamente' : 'Photo coming soon';
       <ul class="who">
         {h.who.cards.map((c, i) => (
           <li class={`who-card tone-${['sage', 'sand', 'mist'][i]}`}>
-            <PhotoSlot ratio="3 / 2" label={soon} class="who-photo" />
+            <PhotoSlot src={cardPhotos[i]} alt={c.photoAlt} ratio="3 / 2" label={soon} class="who-photo" />
             <div class="who-body">
               <h3>{c.title}</h3>
               <p>{c.text}</p>
