@@ -25,7 +25,7 @@ npm run build     # output in dist/
 The site is static and served by Cloudflare Workers static assets (`wrangler.jsonc`).
 
 - Account: Abel's Cloudflare account for now (pinned by `account_id` in `wrangler.jsonc`). First time on a machine: `npx wrangler login`.
-- Deploy: `npm run deploy` (builds, then uploads `dist/`). Live at https://vitalhealing-website.vitalhealing-website.workers.dev.
+- Deploy: automatic on every push/merge to `main` (`.github/workflows/deploy.yml`, needs the `CLOUDFLARE_API_TOKEN` repo secret). Manual fallback: `npm run deploy` (builds, then uploads `dist/`). Live at https://vitalhealing-website.vitalhealing-website.workers.dev.
 - Preview without going live: `npm run deploy:preview`.
 - Custom domain: in Cloudflare, Workers & Pages → vitalhealing-website → Settings → Domains & Routes (the domain must be on Cloudflare DNS).
 - Sign-ups will go to the CRM's public site API once it exists (see `src/config.ts` → `masterclass.formAction`).
