@@ -188,6 +188,29 @@ const es = {
       mailtoBody: 'Hola Dianeris, quiero reservar mi lugar en la masterclass gratuita.',
       fallbackNote: 'Se abrirá tu correo con el mensaje listo para enviar.',
       sending: 'Enviando…',
+      error: 'No pudimos enviar tu registro. Inténtalo de nuevo en un momento.',
+    },
+    confirmed: {
+      title: 'Tu lugar está confirmado.',
+      text: 'Revisa tu correo: ahí te llegan el enlace y los detalles de la masterclass.',
+      textFallback: 'Envía el correo que se abrió y Dianeris confirmará tu lugar.',
+      cta: 'Continuar',
+    },
+    offer: {
+      eyebrow: 'Tu premio por tomar acción',
+      // {price} is replaced with masterclass.offer.price from src/config.ts
+      title: 'Una sesión con Dianeris a solo {price}.',
+      text: 'Una conversación a solas con Dianeris para mirar tus síntomas y decidir tu siguiente paso.',
+      // Read by screen readers only, before the struck-through and the reward price.
+      regularLabel: 'Precio normal:',
+      priceLabel: 'tu precio:',
+      timerLabel: 'La oferta termina en',
+      cta: 'Reservar mi sesión',
+      skip: 'No, gracias',
+      expired: 'Esta oferta ya terminó. Nos vemos en la masterclass.',
+      close: 'Cerrar',
+      mailtoSubject: 'Quiero mi sesión con Dianeris a {price}',
+      mailtoBody: 'Hola Dianeris, me registré en la masterclass y quiero reservar mi sesión a {price}.',
     },
     problem: {
       title: '¿Te suena?',

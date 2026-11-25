@@ -18,6 +18,7 @@ Inspiration: Megan Winter (meganwinter.com.au). Simple, direct, personal, warm.
 - **CTAs:** short, active, benefit-led. "Save your free spot", "Book your free call", "Read her story". Never "Submit" or "Click here".
 - **No medical claims.** Say "helps calm", "quiet", "support". Never "cure", "treat", "heal [a disease]", "guaranteed". Keep the educational disclaimer in the footer.
 - **No fear, no urgency tricks, no piles of exclamation marks, no decorative emoji.**
+  - **Exception: the post-registration session offer** (`src/components/RegisterThanks.astro`, approved 2026-11-25). After the masterclass sign-up, a modal offers a 1:1 session with Dianeris at a special price with a visible 10-minute countdown. The countdown must stay honest: it is real, it is never reset on reload, and the offer really ends when it reaches zero. Always keep the "No, thanks" skip. Don't add countdowns anywhere else.
 - **Testimonials:** real words from real clients only, lightly edited for length and grammar, never changed in meaning. Name only clients who agreed to be named (currently: Dulce López). Others are "Participant · Hormone Reset program". Never pair a stock photo with a testimonial.
 
 ## 2. Bilingual
