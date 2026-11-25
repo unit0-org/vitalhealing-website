@@ -28,4 +28,16 @@ export const masterclass = {
   // Where the registration form POSTs (email platform / CRM endpoint).
   // Empty = the form opens a pre-filled email to Dianeris instead, so no sign-up is lost.
   formAction: '',
+  // Offer shown right after someone registers: a 1:1 session with Dianeris at a special price, for a limited time.
+  offer: {
+    enabled: true,
+    // Usual price, shown struck through next to the reward price. Empty = show only the reward price.
+    regularPrice: '$135',
+    price: '$99',
+    // How long the offer stays open once it's shown. The countdown is real: when it ends, the offer is gone
+    // (the deadline is saved in the browser, so reloading the page doesn't restart it).
+    minutes: 10,
+    // Checkout / booking link for the $99 session. Empty = the button opens a pre-filled email to Dianeris.
+    bookingUrl: '',
+  },
 };

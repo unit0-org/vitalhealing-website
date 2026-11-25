@@ -1,0 +1,147 @@
+---
+// Shown after a masterclass sign-up: 1) "you're confirmed", then 2) the limited-time 1:1 session offer.
+// Opens when RegisterForm dispatches `vh:registered`. Settings live in src/config.ts → masterclass.offer.
+import { t, type Lang } from '../i18n';
+import { masterclass, site } from '../config';
+interface Props { lang: Lang; fallback: boolean }
+const { lang, fallback } = Astro.props;
+const m = t(lang).masterclass;
+const c = m.confirmed;
+const o = m.offer;
+const { offer } = masterclass;
+const price = (s: string) => s.replaceAll('{price}', offer.price);
+const bookHref = offer.bookingUrl
+  || `mailto:${site.email}?subject=${encodeURIComponent(price(o.mailtoSubject))}&body=${encodeURIComponent(price(o.mailtoBody))}`;
+const external = Boolean(offer.bookingUrl);
+const [titleStart, titleEnd = ''] = o.title.split('{price}');
+---
+<dialog class="modal" id="vh-confirmed" aria-labelledby="vh-confirmed-title" data-offer={offer.enabled ? 'true' : 'false'}>
+  <span class="check" aria-hidden="true"></span>
+  <h2 id="vh-confirmed-title">{c.title}</h2>
+  <p>{fallback ? c.textFallback : c.text}</p>
+  <button class="btn" type="button" data-next>{c.cta}</button>
+</dialog>
+
+{offer.enabled && (
+  <dialog class="modal" id="vh-offer" aria-labelledby="vh-offer-title" data-minutes={offer.minutes}>
+    <span class="eyebrow">{o.eyebrow}</span>
+    <h2 id="vh-offer-title">
+      {titleStart}<span class="price">
+        {offer.regularPrice && (
+          <><s class="was"><span class="visually-hidden">{o.regularLabel} </span>{offer.regularPrice}</s>{' '}</>
+        )}<span class="now"><span class="visually-hidden">{o.priceLabel} </span>{offer.price}</span>
+      </span>{titleEnd}
+    </h2>
+    <p>{o.text}</p>
+
+    <div class="live" data-live>
+      <p class="timer" role="timer" aria-live="off">
+        <span class="timer-label">{o.timerLabel}</span>
+        <span class="timer-time" data-time>{String(offer.minutes).padStart(2, '0')}:00</span>
+      </p>
+      <a
+        class="btn btn--marked"
+        href={bookHref}
+        data-book
+        {...(external ? { target: '_blank', rel: 'noopener' } : {})}
+      >{o.cta}</a>
+      <button class="skip" type="button" data-close>{o.skip}</button>
+    </div>
+
+    <div class="ended" data-ended hidden>
+      <p class="expired">{o.expired}</p>
+      <button class="btn btn--ghost" type="button" data-close>{o.close}</button>
+    </div>
+  </dialog>
+)}
+
+<script>
+  const KEY = 'vh-offer-deadline';
+  const confirmed = document.getElementById('vh-confirmed') as HTMLDialogElement | null;
+  const offer = document.getElementById('vh-offer') as HTMLDialogElement | null;
+  let tick: number | undefined;
+
+  const readDeadline = () => {
+    try { return Number(localStorage.getItem(KEY)) || 0; } catch { return 0; }
+  };
+  const saveDeadline = (ms: number) => {
+    try { localStorage.setItem(KEY, String(ms)); } catch { /* private mode: timer still runs for this visit */ }
+  };
+
+  function showEnded() {
+    clearInterval(tick);
+    offer!.querySelector<HTMLElement>('[data-live]')!.hidden = true;
+    offer!.querySelector<HTMLElement>('[data-ended]')!.hidden = false;
+    offer!.querySelector<HTMLElement>('[data-ended] [data-close]')!.focus();
+  }
+
+  function openOffer() {
+    if (!offer) return;
+    // The countdown starts the first time the offer is seen and is never restarted.
+    let deadline = readDeadline();
+    if (!deadline) {
+      deadline = Date.now() + Number(offer.dataset.minutes) * 60_000;
+      saveDeadline(deadline);
+    }
+    if (deadline <= Date.now()) return; // already expired: don't show it again
+
+    const time = offer.querySelector<HTMLElement>('[data-time]')!;
+    const render = () => {
+      const left = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+      time.textContent = `${String(Math.floor(left / 60)).padStart(2, '0')}:${String(left % 60).padStart(2, '0')}`;
+      if (left === 0) showEnded();
+    };
+    render();
+    offer.showModal();
+    tick = window.setInterval(render, 1000);
+  }
+
+  document.addEventListener('vh:registered', () => {
+    // Small delay so the mail app (fallback mode) can open first.
+    setTimeout(() => confirmed?.showModal(), 300);
+  });
+
+  confirmed?.querySelector('[data-next]')?.addEventListener('click', () => confirmed.close());
+  // Closing "confirmed" (button or Esc) leads to the offer.
+  confirmed?.addEventListener('close', () => {
+    if (confirmed.dataset.offer === 'true') openOffer();
+  });
+
+  offer?.querySelectorAll('[data-close]').forEach((b) => b.addEventListener('click', () => offer.close()));
+  offer?.querySelector('[data-book]')?.addEventListener('click', () => offer.close());
+  offer?.addEventListener('close', () => clearInterval(tick));
+
+  // Click on the backdrop closes the dialog.
+  [confirmed, offer].forEach((d) => d?.addEventListener('click', (e) => { if (e.target === d) d.close(); }));
+</script>
+
+<style>
+  .modal {
+    width: min(92vw, 480px); max-height: 92svh; overflow: auto;
+    border: 0; border-radius: var(--radius-md); padding: var(--space-4) var(--space-3) var(--space-3);
+    background: var(--white); color: var(--slate); text-align: center;
+  }
+  .modal::backdrop { background: color-mix(in srgb, var(--forest) 75%, transparent); }
+  /* The dialog sits inside the forest hero: reset the on-forest colours. */
+  .modal .eyebrow { color: var(--leaf-deep); }
+  .modal h2 { font-size: clamp(26px, 6vw, 32px); line-height: 1.2; color: var(--forest); }
+  .price { white-space: nowrap; }
+  .was { color: var(--slate); font-size: 0.75em; text-decoration-thickness: 2px; }
+  .modal p { margin: 0 0 var(--space-3); }
+  .modal .btn { width: 100%; }
+
+  .check { position: relative; display: block; width: 56px; height: 56px; margin: 0 auto var(--space-2); border-radius: 50%; background: var(--sage); }
+  .check::after { content: ''; position: absolute; left: 21px; top: 14px; width: 12px; height: 22px; border: solid var(--forest); border-width: 0 3px 3px 0; transform: rotate(45deg); }
+
+  .timer { display: grid; gap: 4px; margin: 0 0 var(--space-3); padding: var(--space-2); border-radius: var(--radius-md); background: var(--sage); }
+  .timer-label { font-size: 14px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--leaf-deep); }
+  .timer-time { font-family: var(--font-display); font-size: 44px; line-height: 1.1; color: var(--forest); font-variant-numeric: tabular-nums; }
+
+  .skip {
+    display: block; margin: var(--space-3) auto 0; min-height: 44px; padding: 8px 16px;
+    background: none; border: 0; cursor: pointer;
+    font: 400 16px/1.4 var(--font-sans); color: var(--slate); text-decoration: underline; text-underline-offset: 3px;
+  }
+  .skip:hover { color: var(--forest); }
+  .expired { font-family: var(--font-display); font-size: 20px; line-height: 30px; color: var(--forest); }
+</style>
