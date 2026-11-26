@@ -86,6 +86,7 @@ p { margin: 0 0 var(--space-2); text-wrap: pretty; }
 .section--forest { background: var(--forest); color: var(--on-forest); }
 .section--forest h1, .section--forest h2, .section--forest h3 { color: var(--on-forest); }
 .section--forest .eyebrow { color: var(--sage); }
+.section--forest .eyebrow--leaf { color: var(--leaf); }
 
 .eyebrow {
   display: block;
@@ -101,6 +102,7 @@ p { margin: 0 0 var(--space-2); text-wrap: pretty; }
 .lede { font-size: 21px; line-height: 32px; }
 .accent { font-family: var(--font-script); font-weight: 400; color: var(--leaf-deep); font-size: 1.35em; line-height: 0.8; }
 .section--forest .accent { color: var(--leaf); }
+.accent--leaf { color: var(--leaf); }
 
 /* Buttons: forest with white text. Orange is only the marker (see .btn--marked). */
 .btn {

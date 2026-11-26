@@ -8,14 +8,14 @@ The visual source of truth is the **Vital Healing** design system (claude.ai art
 
 Inspiration: Megan Winter (meganwinter.com.au). Simple, direct, personal, warm.
 
-- **Dianeris is always in the third person.** "Dianeris helps…", "She believes…". Never "I" or "we" for her.
+- **Dianeris speaks in the first person** (changed 2026-11-25). "I help you…", "Te acompaño…", "I believe…". On the home page she introduces herself once ("Soy Dianeris Posada…"). Exceptions that stay in the third person: the About page story and the home "Conoce a Dianeris" section (written as an interview profile; their title is her quote, in quotation marks), meta titles/descriptions, photo alt text, testimonials (clients' own words), video captions, and the privacy policy (Vital Healing as "we").
 - **The reader is "you".** Spanish: informal *tú*, and feminine when the page is for women (*cansada*, *lista*, *acompañada*).
 - **Short sentences.** One idea each, usually 8–18 words. Two short sentences beat one long one.
 - **Say it plainly.** Words a friend would use. No jargon. If a technical term is needed (HTMA), explain it once in plain words.
 - **Name the real feeling.** Concrete symptoms and moments ("tired by 3 p.m.", "you lose words") over abstractions ("wellness journey").
 - **Highlight:** one key phrase per headline can get the hand-drawn leaf underline (`<mark class="mark">`), as in "no es normal". Keep the copy in `i18n` split into start / mark / end.
 - **Headlines:** sentence case, a full thought, often ending in a period. The script accent (Allura) carries **one** emotional word per headline at most: *increíble*, *amazing*.
-- **CTAs:** short, active, benefit-led. "Save your free spot", "Book your free call", "Read her story". Never "Submit" or "Click here".
+- **CTAs:** short, active, benefit-led. "Save your free spot", "Book your free call", "A little about me". Never "Submit" or "Click here".
 - **No medical claims.** Say "helps calm", "quiet", "support". Never "cure", "treat", "heal [a disease]", "guaranteed". Keep the educational disclaimer in the footer.
 - **No fear, no urgency tricks, no piles of exclamation marks, no decorative emoji.**
 - **Testimonials:** real words from real clients only, lightly edited for length and grammar, never changed in meaning. Name only clients who agreed to be named (currently: Dulce López). Others are "Participant · Hormone Reset program". Never pair a stock photo with a testimonial.
@@ -36,9 +36,11 @@ Inspiration: Megan Winter (meganwinter.com.au). Simple, direct, personal, warm.
 - **Colours:** use the CSS tokens only (`var(--forest)` etc.), never raw hex in components.
   - Text: `forest` (titles) and `slate` (body) on `cream`, `white` or `sage`; `white` on `forest`.
   - Green text (eyebrows, links, captions) is `leaf-deep`, never `leaf`.
-  - `leaf` is for shapes and the mark only.
+  - `leaf` is for shapes and the mark only. Exception: on forest, the masterclass eyebrows ("Masterclass gratuita" on the home page and the masterclass page hero, plus its "Fecha" and "Formato" labels) are `leaf` (`.eyebrow--leaf`), so the event stands out without orange.
   - **Program tints** (site addition, not yet in the design system): `sage`, `sand` and `mist` give each program card its own colour so they don't read as one green block. Use them in that order, as backgrounds only; `sand-deep`, `leaf` and `slate` are the matching accent bars. Don't use them for anything else.
   - **Orange marks the call to action and nothing else:** at most one orange marker per section (`.btn--marked`), never orange text or an orange button fill.
+  - **No orange text.** (Tried and dropped 2026-11-25: it read too loud.) Home "Tiene solución" uses `leaf` instead (`.accent--leaf`), as the client asked, even though leaf on white reads below 4.5:1; it is large script text.
+- **Space before a CTA:** 40px between the text above and the button (48px in heroes).
 - **Buttons:** forest with white text (`.btn`), or outline (`.btn--ghost`); white (`.btn--light`) on forest sections.
 - **Type:** Libre Baskerville for titles (regular weight only), Lato for text, Allura only for the single accent word. Eyebrows: Lato bold, uppercase, 0.2em letter-spacing, `leaf-deep`.
 - **Shape:** photos and the forest name band are square (`--radius-none`); cards and panels use `--radius-md`; buttons `--radius-sm`. Separate sections with background changes or a 2–3px `sage` rule, not shadows.
