@@ -201,6 +201,12 @@ const en: Dict = {
         'Hot flashes hit at the worst possible moment.',
       ],
       close: 'You were told it’s “just your age”. I disagree.',
+      didYouKnow: {
+        titleStart: 'Did you know perimenopause can start',
+        titleMark: 'at 35',
+        titleEnd: '?',
+        text: 'It’s the stage before menopause. Many women go through it without knowing it has a name.',
+      },
     },
     learn: {
       eyebrow: 'What you’ll learn',
@@ -227,7 +233,7 @@ const en: Dict = {
     forYou: {
       title: 'This masterclass is for you if…',
       items: [
-        'You’re in perimenopause or menopause and noticing changes you don’t understand.',
+        'You’re 35 or older and noticing changes in your body or mood that you don’t understand.',
         'You want clear answers, not just pills to cover up symptoms.',
         'You’re ready to make small changes you can actually feel.',
         'You want to feel like yourself again, with energy and calm.',

@@ -40,6 +40,10 @@ const date = masterclass.date
         {m.problem.items.map((i) => <li>{i}</li>)}
       </ul>
       <p class="close">{m.problem.close}</p>
+      <aside class="did-you-know">
+        <h3>{m.problem.didYouKnow.titleStart} <mark class="mark">{m.problem.didYouKnow.titleMark}</mark>{m.problem.didYouKnow.titleEnd}</h3>
+        <p>{m.problem.didYouKnow.text}</p>
+      </aside>
     </div>
   </section>
 
@@ -133,6 +137,10 @@ const date = masterclass.date
   .checks li::after { content: ''; position: absolute; left: 8px; top: 9px; width: 6px; height: 10px; border: solid var(--forest); border-width: 0 2px 2px 0; transform: rotate(45deg); }
   .leaves li::before { content: ''; position: absolute; left: 2px; top: 4px; width: 22px; height: 22px; background: var(--leaf); border-radius: 0 100% 0 100%; }
   .close { font-family: var(--font-display); font-size: 24px; line-height: 34px; color: var(--forest); margin-top: var(--space-3); }
+  /* Names the stage for women who recognise the symptoms but not the word "perimenopausia" */
+  .did-you-know { margin-top: var(--space-4); background: var(--sage); border-radius: var(--radius-md); padding: var(--space-4) var(--space-3); text-align: center; }
+  .did-you-know h3 { font-size: clamp(26px, 3.2vw, 34px); line-height: 1.25; margin: 0 auto var(--space-2); max-width: 18em; }
+  .did-you-know p { margin: 0 auto; max-width: 30em; font-size: 18px; line-height: 28px; color: var(--slate); }
 
   .learn-title { max-width: 22ch; }
   .learn { list-style: none; padding: 0; margin: var(--space-4) 0 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
