@@ -23,7 +23,7 @@ export const programs = {
 
 export const masterclass = {
   // ISO date-time with offset, e.g. '2027-01-21T18:00:00-08:00'. null shows "date coming soon".
-  date: null as string | null,
+  date: '2026-12-17T17:00:00-07:00' as string | null,
   timeZoneLabel: 'PT (Vancouver)',
   // Where the registration form POSTs (email platform / CRM endpoint).
   // Empty = the form opens a pre-filled email to Dianeris instead, so no sign-up is lost.

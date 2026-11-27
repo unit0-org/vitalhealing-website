@@ -20,7 +20,7 @@ const date = masterclass.date
   <section class="hero section--forest">
     <div class="container hero-grid">
       <div>
-        <span class="eyebrow">{m.hero.eyebrow}</span>
+        <span class="eyebrow eyebrow--leaf">{m.hero.eyebrow}</span>
         <h1>{m.hero.title}</h1>
         <p class="lede">{m.hero.sub}</p>
         <dl class="facts">
@@ -124,7 +124,7 @@ const date = masterclass.date
   .hero .lede { color: var(--on-forest); font-size: clamp(17px, 2.5vh, 21px); line-height: 1.5; margin-bottom: 0; max-width: 34em; }
   .facts { margin: clamp(16px, 3vh, 32px) 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
   .facts div { border-left: 0; padding-top: var(--space-2); border-top: 2px solid rgba(255, 255, 255, 0.25); }
-  .facts dt { font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); }
+  .facts dt { font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--leaf); }
   .facts dd { margin: 4px 0 0; font-size: 18px; color: var(--white); }
 
   .checks, .leaves { list-style: none; padding: 0; margin: var(--space-3) 0; display: grid; gap: var(--space-2); }
@@ -155,6 +155,7 @@ const date = masterclass.date
 
   .center { text-align: center; }
   .center .lede { color: var(--on-forest); }
+  .center .btn { margin-top: 24px; }
 
   @media (max-width: 900px) {
     .hero { min-height: 0; }

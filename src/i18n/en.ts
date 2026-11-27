@@ -10,7 +10,7 @@ const en: Dict = {
   nav: {
     home: 'Home',
     masterclass: 'Masterclass',
-    about: 'About Dianeris',
+    about: 'About me',
     programs: 'Programs',
     book: 'Book a call',
     menu: 'Menu',
@@ -25,9 +25,9 @@ const en: Dict = {
         'Dianeris Posada helps women in perimenopause and menopause, families with autistic children, and anyone who wants their energy back, with integrative nutrition and HTMA testing.',
     },
     masterclass: {
-      title: 'Free masterclass: perimenopause & menopause · Vital Healing',
+      title: 'Free masterclass: Sleep better in peri and menopause · Vital Healing',
       description:
-        'A free class with Dianeris Posada on what is behind your perimenopause and menopause symptoms, and the changes that help you feel like yourself again.',
+        'A free class with Dianeris Posada: why peri and menopause symptoms happen, and four simple changes to start feeling better from the first week.',
     },
     about: {
       title: 'About Dianeris Posada · Vital Healing',
@@ -54,9 +54,9 @@ const en: Dict = {
       titleAccent: 'amazing,',
       titleMark: 'every day',
       titleEnd: '.',
-      sub: 'Dianeris Posada helps women and families get their energy, calm and wellbeing back. From the root, with a plan made for their body and their life.',
+      sub: 'I’m Dianeris Posada, and I help women and families get their energy, calm and wellbeing back. From the root, with a plan made for your body and your life.',
       ctaPrimary: 'Join the free masterclass',
-      ctaSecondary: 'Meet Dianeris',
+      ctaSecondary: 'My story',
       photoAlt: 'Dianeris Posada, health coach and founder of Vital Healing',
     },
     truth: {
@@ -64,57 +64,57 @@ const en: Dict = {
       line1Mark: 'isn’t normal',
       line1End: '.',
       line2: 'There’s a way out.',
-      text: 'Tired by 3 p.m. Headaches you’ve learned to live with. Sleepless nights someone told you were “just your age”. Dianeris believes you don’t have to settle for that.',
+      text: 'If you’re out of energy by 3 p.m., if headaches have become part of your day, or if you lie awake at night and were told it’s “just your age”, I want you to know something: you don’t have to settle for that.',
     },
     masterclass: {
       eyebrow: 'Free masterclass',
-      title: 'Perimenopause and menopause, without the guesswork.',
-      text: 'In one class, Dianeris explains what is happening in your body and the simple changes that help calm hot flashes, sleepless nights, brain fog and weight gain.',
+      title: 'Energy, calm and good sleep in peri and menopause.',
+      text: 'I explain why peri and menopause symptoms happen and teach you four simple changes, in food, rest, your relationship with food and calm, so you can start feeling better from the first week.',
       cta: 'Save your free spot',
     },
     who: {
-      eyebrow: 'Who Dianeris helps',
-      title: 'A different path for every stage.',
+      eyebrow: 'Who I help',
+      title: 'I walk with you through every step.',
       cards: [
         {
           key: 'programMenopause',
           photoAlt: 'Woman smiling with a cup of tea in a garden',
           title: 'Women in perimenopause and menopause',
-          text: 'Hot flashes, sleepless nights, brain fog, weight that won’t shift. It’s common, but it isn’t “just your age”. Dianeris helps you find out what your body needs and get your energy back.',
+          text: 'Hot flashes, sleepless nights, brain fog, weight that won’t shift. It’s common, but it isn’t “just your age”. I help you find out what your body needs and get your energy back.',
           cta: 'See the program',
         },
         {
           key: 'programAutism',
           photoAlt: 'Mother and son sharing a plate of fruit and vegetables in the kitchen',
           title: 'Families with autistic children',
-          text: 'Mealtimes that feel like a battle, a child who eats only a handful of foods, and a mom who is running on empty. Dianeris supports the child’s nutrition, and the mom too.',
+          text: 'Mealtimes that feel like a battle, a child who eats only a handful of foods, and a mom who is running on empty. I support the child’s nutrition, and the mom too.',
           cta: 'See the program',
         },
         {
           key: 'programVitality',
           photoAlt: 'Couple laughing on a forest trail',
           title: 'Anyone who wants to feel great',
-          text: '“Fine” isn’t the same as feeling great. If you want more energy, better sleep and a fuller life, Dianeris shows you how, step by step.',
+          text: '“Fine” isn’t the same as feeling great. If you want more energy, better sleep and a fuller life, I show you how, step by step.',
           cta: 'See the program',
         },
       ],
     },
     about: {
       eyebrow: 'Meet Dianeris',
-      title: 'She went looking for a way to save her mother. She found her way back to herself.',
+      title: '“I went looking for a way to save my mother. I found my way back to myself.”',
       paras: [
         'Dianeris Posada was born in Cuba, started over in Canada at 40, and built a corporate career while working four jobs at once. In 2020, when her mother was diagnosed with cancer and the borders closed, she started studying nutrition to help her from afar.',
         'Today she is a certified health coach from the Institute for Integrative Nutrition and the founder of Vital Healing. Her work always starts in the same place: changing how you think about your health, so the rest can follow.',
       ],
-      cta: 'Read her story',
+      cta: 'Her full story',
     },
     stories: {
       eyebrow: 'Real stories',
-      title: 'What her clients say.',
+      title: 'What my clients say.',
     },
     final: {
       title: 'Ready to feel like yourself again?',
-      text: 'Book a free 20-minute call with Dianeris. No pressure: just a conversation about what you’re going through.',
+      text: 'Let’s talk about what you’re going through. In 20 minutes, we’ll see together if this is right for you and how I can help.',
       cta: 'Book your free call',
     },
   },
@@ -141,40 +141,40 @@ const en: Dict = {
         'The doctors sent me home with antidepressants and sleeping pills. I didn’t want to hide my symptoms. I wanted to heal from the root. Dianeris took my hand and said, “we’ll solve this.” I finally felt I was in safe hands.',
       name: 'Participant',
       detail: 'Hormone Reset program',
-      result: 'Energy, sleep and mood back',
+      result: 'I got my energy, sleep and mood back',
     },
     {
       quote:
         'My migraines are gone. Everything was explained so simply that I could share it with my family, and many of the program’s recipes are now our regular meals at home.',
       name: 'Participant',
       detail: 'Hormone Reset program',
-      result: 'Migraines gone',
+      result: 'My migraines are gone',
     },
     {
       quote:
         'I’m not pre-diabetic anymore. I have more energy, better digestion and no more acid reflux. And if I slip at a party, I know exactly how to get back on track the next day.',
       name: 'Participant',
       detail: 'Hormone Reset program',
-      result: 'No longer pre-diabetic',
+      result: 'I’m no longer pre-diabetic',
     },
     {
       quote:
         'My son had no energy and lived on sweets. With his HTMA test and personalized plan, he dropped sugar on his own and became happy, active and proactive again. A thousand percent recommended.',
       name: 'Dulce López',
       detail: 'HTMA testing for her family',
-      result: 'Her son got his energy back',
+      result: 'My son got his energy back',
     },
   ],
 
   masterclass: {
     hero: {
       eyebrow: 'Free masterclass · Online',
-      title: 'Feel like yourself again through perimenopause and menopause.',
-      sub: 'Join Dianeris Posada, Institute for Integrative Nutrition certified health coach, and learn the changes that help many women quiet their symptoms almost completely. No guessing, and no “just pushing through”.',
+      title: 'Energy, calm and good sleep in peri and menopause.',
+      sub: 'I explain why peri and menopause symptoms happen and teach you four simple changes, in food, rest, your relationship with food and calm, so you can start feeling better from the first week.',
       dateLabel: 'Date',
-      dateTBA: 'Next date coming soon. Register and you’ll be the first to know.',
+      dateTBA: 'Next date coming soon. Register and I’ll let you know first.',
       formatLabel: 'Format',
-      format: 'Live on Zoom · 60 minutes · Free',
+      format: 'Live on Zoom · 45-min class + 15-min Q&A · Free',
     },
     form: {
       title: 'Save your free spot',
@@ -193,40 +193,41 @@ const en: Dict = {
     problem: {
       title: 'Sound familiar?',
       items: [
-        'You wake up tired, even after a full night.',
-        'Hot flashes hit at the worst possible moment.',
+        'You wake up in the early hours and can’t get back to sleep.',
+        'You feel anxious and don’t know where it comes from.',
+        'Cravings win, especially in the afternoon and at night.',
+        'You’re tired even after a full night.',
         'You lose words and struggle to focus.',
-        'You eat the same as always, but the weight keeps creeping up.',
-        'Your mood swings for no reason and you don’t recognize yourself.',
+        'Hot flashes hit at the worst possible moment.',
       ],
-      close: 'You were told it’s “just your age”. Dianeris disagrees.',
+      close: 'You were told it’s “just your age”. I disagree.',
     },
     learn: {
       eyebrow: 'What you’ll learn',
-      title: 'In 60 minutes, you’ll understand your body like never before.',
+      title: 'Why it happens, and four changes to start this week.',
       items: [
         {
-          title: 'What’s really going on',
-          text: 'Why hot flashes, poor sleep, brain fog and weight gain show up, and why it isn’t only your age.',
+          title: 'Food',
+          text: 'What to put on your plate for steadier energy through the day.',
         },
         {
-          title: 'The hidden disruptors',
-          text: 'What’s in your kitchen, your bathroom and your makeup bag that may be throwing your hormones off.',
+          title: 'Rest',
+          text: 'One simple change to your routine to sleep better and wake up with more energy.',
         },
         {
-          title: 'The minerals you’re missing',
-          text: 'Which minerals your body needs at this stage, and how an HTMA test shows what is happening inside.',
+          title: 'Your relationship with food',
+          text: 'How to understand your cravings and eat without guilt or a fight with yourself.',
         },
         {
-          title: 'Changes to start tomorrow',
-          text: 'Simple food and daily habits that calm symptoms, explained step by step so they fit your life.',
+          title: 'Calm',
+          text: 'A short practice to ease anxiety and feel more at peace.',
         },
       ],
     },
     forYou: {
       title: 'This masterclass is for you if…',
       items: [
-        'You’re between 40 and 60 and noticing changes you don’t understand.',
+        'You’re in perimenopause or menopause and noticing changes you don’t understand.',
         'You want clear answers, not just pills to cover up symptoms.',
         'You’re ready to make small changes you can actually feel.',
         'You want to feel like yourself again, with energy and calm.',
@@ -235,8 +236,8 @@ const en: Dict = {
     host: {
       eyebrow: 'Your host',
       title: 'Dianeris Posada',
-      text: 'Dianeris is a certified health coach from the Institute for Integrative Nutrition and the founder of Vital Healing. She uses hair tissue mineral analysis (HTMA) to give each woman clear language for what her body has been trying to tell her for years. Her 8-week Hormone Reset program has already helped women who now sleep better, have more energy and feel like themselves again.',
-      cta: 'Read her story',
+      text: 'I’m a certified health coach from the Institute for Integrative Nutrition and the founder of Vital Healing. I use hair tissue mineral analysis (HTMA) to give each woman clear language for what her body has been trying to tell her for years. My 8-week Hormone Reset program has already helped women who now sleep better, have more energy and feel like themselves again.',
+      cta: 'Read my story',
     },
     storiesTitle: 'Women who have been there.',
     faq: {
@@ -248,15 +249,15 @@ const en: Dict = {
         },
         {
           q: 'What if I can’t attend live?',
-          a: 'Register anyway. We’ll let you know about the next date and any replay available.',
+          a: 'Register anyway. I’ll let you know about the next date and any replay available.',
         },
         {
           q: 'Do I need to know anything about nutrition?',
-          a: 'No. Dianeris explains everything simply, without technical jargon.',
+          a: 'No. I explain everything simply, without technical jargon.',
         },
         {
           q: 'Is this medical advice?',
-          a: 'No. The masterclass is educational and doesn’t replace care from your doctor. Dianeris works alongside your health team.',
+          a: 'No. The masterclass is educational and doesn’t replace care from your doctor. I work alongside your health team.',
         },
       ],
     },
@@ -270,8 +271,8 @@ const en: Dict = {
   about: {
     hero: {
       eyebrow: 'About Dianeris',
-      title: 'She went looking for a way to save her mother. She found her way back to herself.',
-      lede: 'Dianeris Posada (Diana, to those who know her) is a certified health coach from the Institute for Integrative Nutrition and the founder of Vital Healing · Sanación Vital. This is her story.',
+      title: '“I went looking for a way to save my mother. I found my way back to myself.”',
+      lede: 'Dianeris Posada (Diana, to those who know her) is a certified health coach from the Institute for Integrative Nutrition and the founder of Vital Healing · Sanación Vital. We sat down with her to hear her story.',
       photoAlt: 'Portrait of Dianeris Posada',
     },
     chapters: [
@@ -334,7 +335,14 @@ const en: Dict = {
           text: 'She treats the emotional side as seriously as the physical. Most people don’t lack willpower. They lack a reason to believe change is possible.',
         },
       ],
-      story: 'An 87-year-old woman was too exhausted to stay on the phone with her son for more than 10 minutes. After the program, they talked for 30. Those are the results Dianeris cares about most.',
+      story: {
+        label: 'On the phone with her son',
+        from: '10',
+        to: '30',
+        unit: 'minutes',
+        text: 'At 87, she was too tired to stay on the phone with her son for more than 10 minutes. After the program, they talked for 30.',
+        close: 'Those are the results Dianeris cares about most.',
+      },
     },
     today: {
       eyebrow: 'Today',
@@ -363,7 +371,7 @@ const en: Dict = {
   program: {
     eyebrow: 'Program',
     soon: 'Coming soon',
-    text: 'The full details of this program are on their way. In the meantime, book a free 20-minute call with Dianeris and tell her what you’re going through.',
+    text: 'I’m putting together the full details of this program. In the meantime, book a free 20-minute call with me and tell me what you’re going through.',
     cta: 'Book your free call',
     back: 'Back to home',
     titles: {
@@ -379,7 +387,7 @@ const en: Dict = {
       titleStart: 'Menopause',
       titleMark: 'doesn’t have to',
       titleEnd: ' feel like this.',
-      sub: 'Hormone Reset is Dianeris Posada’s 8-week program for women in perimenopause and menopause. It starts with a mineral test, gives you a plan made for your body, and walks with you every week, in Spanish.',
+      sub: 'Hormone Reset is my 8-week program for women in perimenopause and menopause. It starts with a mineral test, gives you a plan made for your body, and I walk with you every week, in Spanish.',
       facts: ['8 weeks', 'Online, in Spanish', 'Groups of 20 women'],
       ctaPrimary: 'Sign up for Hormone Reset',
       ctaSecondary: 'Join the free masterclass',
@@ -404,9 +412,9 @@ const en: Dict = {
       title: 'First understand. Then change.',
       text: 'Behind many symptoms is a mineral imbalance no one has measured. That’s why the program starts with a test, not a generic diet.',
       steps: [
-        { title: 'Your mineral test', text: 'An HTMA kit arrives at your door: a small hair sample that shows where your minerals stand. Dianeris walks you through the results in a 60-minute 1:1 session.' },
+        { title: 'Your mineral test', text: 'An HTMA kit arrives at your door: a small hair sample that shows where your minerals stand. I walk you through the results in a 60-minute 1:1 session.' },
         { title: 'Your plan', text: 'From those results you get a mineral protocol made for you, meal plans, 50+ recipes and a guide for each week.' },
-        { title: 'Eight weeks, together', text: 'Every week, a live class with Dianeris and a Q&A session. In a small group of women going through the same thing.' },
+        { title: 'Eight weeks, together', text: 'Every week, a live class with me and a Q&A session. In a small group of women going through the same thing.' },
       ],
     },
     outcomes: {
@@ -431,12 +439,12 @@ const en: Dict = {
       title: 'Everything you need, in one program.',
       items: [
         { title: 'HTMA test and mineral protocol', text: 'The kit comes to your home. Your protocol is built from your results.' },
-        { title: '1:1 results walkthrough', text: '60 minutes with Dianeris to understand what your body is saying.' },
+        { title: '1:1 results walkthrough', text: '60 minutes with me to understand what your body is saying.' },
         { title: 'Meal plans and recipes', text: 'More than 50 recipes and a guide for each week.' },
         { title: 'Detox rituals', text: 'Simple practices to support your body.' },
-        { title: '8 live classes', text: 'One hour each week with Dianeris and the group, with tips you can use that same day.' },
+        { title: '8 live classes', text: 'One hour each week with me and the group, with tips you can use that same day.' },
         { title: '8 Q&A sessions', text: '30 minutes each week to get your questions answered.' },
-        { title: 'A 1:1 session with Dianeris', text: 'One hour, just you and her, for whatever you need.' },
+        { title: 'A 1:1 session with me', text: 'One hour, just you and me, for whatever you need.' },
       ],
       priceLabel: 'Your investment',
       price: '$697 CAD',
@@ -449,9 +457,9 @@ const en: Dict = {
     guarantee: {
       eyebrow: 'Guarantee',
       titleStart: 'If you don’t feel better, ',
-      titleMark: 'you get your money back',
+      titleMark: 'I’ll give you your money back',
       titleEnd: '.',
-      text: 'Attend all 8 live classes and follow your protocol. If you don’t feel better by the end of week 8, Dianeris gives you a full refund. She carries the risk, not you.',
+      text: 'Attend all 8 live classes and follow your protocol. If you don’t feel better by the end of week 8, I give you a full refund. I carry the risk, not you.',
     },
     stories: {
       eyebrow: 'Real stories',
@@ -459,20 +467,20 @@ const en: Dict = {
     },
     faq: {
       eyebrow: 'Questions',
-      title: 'What women often ask.',
+      title: 'What women often ask me.',
       items: [
         { q: 'Is it in Spanish?', a: 'Yes. Every class and Q&A session is in Spanish.' },
         { q: 'Do I need to live in Vancouver?', a: 'No. It’s all online. You can join from anywhere in Canada or the US, and the HTMA kit is mailed to you.' },
         { q: 'Why a hair test?', a: 'HTMA shows the mineral imbalance that may be behind your symptoms. That way your protocol is made for you, not generic.' },
         { q: 'What if I already see a doctor?', a: 'Good. The program works alongside your doctor’s care; it doesn’t replace it.' },
-        { q: 'Why live and in a group?', a: 'A self-paced version was tried, and it didn’t work. Results come from showing up every week, with the group and with Dianeris guiding you.' },
+        { q: 'Why live and in a group?', a: 'I tried a self-paced version, and it didn’t work. Results come from showing up every week, with the group and with me guiding you.' },
         { q: 'What if I can’t make the classes?', a: 'A new group starts twice a month, so you can pick the start date that fits your schedule.' },
         { q: 'What if now isn’t the right time?', a: 'That’s okay. You can join a later group.' },
       ],
     },
     final: {
       title: 'This chapter can feel better.',
-      text: 'Save your spot in the next group. Not sure yet? In the free masterclass, Dianeris explains what’s behind your symptoms.',
+      text: 'Save your spot in the next group. Not sure yet? In the free masterclass, I explain what’s behind your symptoms.',
       cta: 'Sign up for Hormone Reset',
       secondary: 'Join the free masterclass',
     },
@@ -482,7 +490,7 @@ const en: Dict = {
     tagline: 'A space to feel supported and live with vitality.',
     explore: 'Explore',
     contact: 'Contact',
-    follow: 'Follow along',
+    follow: 'Follow me',
     privacy: 'Privacy policy',
     rights: 'All rights reserved.',
     disclaimer: 'The information on this site is educational and does not replace advice from a medical professional.',
