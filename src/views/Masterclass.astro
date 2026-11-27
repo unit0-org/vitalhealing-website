@@ -40,10 +40,21 @@ const date = masterclass.date
         {m.problem.items.map((i) => <li>{i}</li>)}
       </ul>
       <p class="close">{m.problem.closeStart} <mark class="mark">{m.problem.closeMark}</mark>{m.problem.closeEnd}</p>
-      <aside class="did-you-know">
-        <h3>{m.problem.didYouKnow.titleStart} <mark class="mark">{m.problem.didYouKnow.titleMark}</mark>{m.problem.didYouKnow.titleEnd}</h3>
-        <p>{m.problem.didYouKnow.text}</p>
-      </aside>
+    </div>
+  </section>
+
+  <!-- What perimenopause is: many women don't recognise the word or know it can start at 35 -->
+  <section class="section section--sage">
+    <div class="container">
+      <div class="peri-head">
+        <h2>{m.peri.titleStart} <mark class="mark">{m.peri.titleMark}</mark>{m.peri.titleEnd}</h2>
+        <p class="lede">{m.peri.sub}</p>
+      </div>
+      <div class="peri">
+        <article class="card"><h3>{m.peri.what.title}</h3><p>{m.peri.what.text}</p></article>
+        <article class="card"><h3>{m.peri.why.title}</h3><p>{m.peri.why.text}</p></article>
+      </div>
+      <p class="peri-close">{m.peri.close}</p>
     </div>
   </section>
 
@@ -137,10 +148,11 @@ const date = masterclass.date
   .checks li::after { content: ''; position: absolute; left: 8px; top: 9px; width: 6px; height: 10px; border: solid var(--forest); border-width: 0 2px 2px 0; transform: rotate(45deg); }
   .leaves li::before { content: ''; position: absolute; left: 2px; top: 4px; width: 22px; height: 22px; background: var(--leaf); border-radius: 0 100% 0 100%; }
   .close { font-family: var(--font-display); font-size: 24px; line-height: 34px; color: var(--forest); margin-top: var(--space-3); }
-  /* Names the stage for women who recognise the symptoms but not the word "perimenopausia" */
-  .did-you-know { margin-top: var(--space-4); background: var(--sage); border-radius: var(--radius-md); padding: var(--space-4) var(--space-3); text-align: center; }
-  .did-you-know h3 { font-size: clamp(26px, 3.2vw, 34px); line-height: 1.25; margin: 0 auto var(--space-2); max-width: 18em; }
-  .did-you-know p { margin: 0 auto; max-width: 30em; font-size: 18px; line-height: 28px; color: var(--slate); }
+  .peri-head { text-align: center; max-width: 760px; margin: 0 auto; }
+  .peri-head .lede { margin: 0; }
+  .peri { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); margin: var(--space-4) auto 0; max-width: 960px; }
+  .peri p { margin: 0; }
+  .peri-close { margin: var(--space-4) 0 0; text-align: center; font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 24px); color: var(--forest); }
 
   .learn-title { max-width: 22ch; }
   .learn { list-style: none; padding: 0; margin: var(--space-4) 0 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
@@ -170,7 +182,7 @@ const date = masterclass.date
     .hero { min-height: 0; }
     .facts { grid-template-columns: 1fr; gap: var(--space-2); }
     .hero-grid, .host { grid-template-columns: 1fr; }
-    .learn { grid-template-columns: 1fr; }
+    .learn, .peri { grid-template-columns: 1fr; }
     .host img { max-width: 320px; }
   }
 </style>

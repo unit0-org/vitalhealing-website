@@ -79,22 +79,22 @@ const en: Dict = {
         {
           key: 'programMenopause',
           photoAlt: 'Woman smiling with a cup of tea in a garden',
-          title: 'Women in perimenopause and menopause',
-          text: 'Hot flashes, sleepless nights, brain fog, weight that won’t shift. It’s common, but it isn’t “just your age”. I help you find out what your body needs and get your energy back.',
+          title: 'Women 35 and over',
+          text: 'You sleep badly, feel anxious or drained, and don’t know why. It may be **perimenopause**, which starts earlier than you think, or **menopause**. I help you find out what your body needs and get your energy back.',
           cta: 'See the program',
         },
         {
           key: 'programAutism',
           photoAlt: 'Mother and son sharing a plate of fruit and vegetables in the kitchen',
           title: 'Families with autistic children',
-          text: 'Mealtimes that feel like a battle, a child who eats only a handful of foods, and a mom who is running on empty. I support the child’s nutrition, and the mom too.',
+          text: 'Mealtimes that feel like a battle, a child who eats only a handful of foods, and a mom who is running on empty. I support **the child’s nutrition**, and **the mom** too.',
           cta: 'See the program',
         },
         {
           key: 'programVitality',
           photoAlt: 'Couple laughing on a forest trail',
           title: 'Anyone who wants to feel great',
-          text: '“Fine” isn’t the same as feeling great. If you want more energy, better sleep and a fuller life, I show you how, step by step.',
+          text: '“Fine” isn’t the same as feeling great. If you want **more energy, better sleep and a fuller life**, I show you how, step by step.',
           cta: 'See the program',
         },
       ],
@@ -203,12 +203,21 @@ const en: Dict = {
       closeStart: 'You were told it’s “just your age”.',
       closeMark: 'I disagree',
       closeEnd: '.',
-      didYouKnow: {
-        titleStart: 'Did you know perimenopause can start',
-        titleMark: 'at 35',
-        titleEnd: '?',
-        text: 'It’s the stage before menopause. Many women go through it without knowing it has a name.',
+    },
+    peri: {
+      titleStart: 'Did you know perimenopause can start',
+      titleMark: 'at 35',
+      titleEnd: '?',
+      sub: 'It’s the stage before menopause, and it often arrives sooner than we expect.',
+      what: {
+        title: 'What is it?',
+        text: 'A transition in which your hormones start to shift, even while you still have your period. It can last for several years.',
       },
+      why: {
+        title: 'Why act now?',
+        text: 'If you’re just starting to notice some signs, this is the best time. Small changes today help you go through this stage with energy and calm, instead of putting up with it for years.',
+      },
+      close: 'That’s why I created this masterclass: so you can get ahead of it.',
     },
     learn: {
       eyebrow: 'What you’ll learn',
@@ -262,6 +271,10 @@ const en: Dict = {
         {
           q: 'Is it really free?',
           a: 'Yes. The masterclass is 100% free. You just need to register with your email to get the link.',
+        },
+        {
+          q: 'I’m under 40. Is it for me?',
+          a: 'Yes. Perimenopause can start at 35, and many women go through it without knowing it has a name. If you recognise any of these changes, the masterclass helps you understand why they happen.',
         },
         {
           q: 'What if I can’t attend live?',
@@ -403,7 +416,7 @@ const en: Dict = {
       titleStart: 'Menopause',
       titleMark: 'doesn’t have to',
       titleEnd: ' feel like this.',
-      sub: 'Hormone Reset is my 8-week program for women in perimenopause and menopause. It starts with a mineral test, gives you a plan made for your body, and I walk with you every week, in Spanish.',
+      sub: 'Hormone Reset is my program for women 35 and over, in perimenopause or menopause. It starts with a mineral test, gives you a plan made for your body, and I walk with you every week.',
       facts: ['8 weeks', 'Online, in Spanish', 'Groups of 20 women'],
       ctaPrimary: 'Sign up for Hormone Reset',
       ctaSecondary: 'Join the free masterclass',
@@ -424,13 +437,13 @@ const en: Dict = {
       closeEnd: ', and you don’t have to push through it.',
     },
     approach: {
-      eyebrow: 'How it works',
+      eyebrow: 'How it works, and why it’s different',
       title: 'First understand. Then change.',
       text: 'Behind many symptoms is a mineral imbalance no one has measured. That’s why the program starts with a test, not a generic diet.',
       steps: [
-        { title: 'Your mineral test', text: 'An HTMA kit arrives at your door: a small hair sample that shows where your minerals stand. I walk you through the results in a 60-minute 1:1 session.' },
-        { title: 'Your plan', text: 'From those results you get a mineral protocol made for you, meal plans, 50+ recipes and a guide for each week.' },
-        { title: 'Eight weeks, together', text: 'Every week, a live class with me and a Q&A session. In a small group of women going through the same thing.' },
+        { tag: 'What makes it different', title: 'Your mineral test', text: 'An HTMA kit arrives at your door: a small hair sample that shows where your minerals stand. I walk you through the results in a 60-minute 1:1 session.' },
+        { tag: '', title: 'Your mineral rebalance', text: 'From your results you get a mineral protocol made for you, plus meal plans, 50+ recipes and a guide for each week.' },
+        { tag: '', title: 'Eight weeks, together', text: 'Every week, a live class with me and a Q&A session. In a small group of women going through the same thing.' },
       ],
     },
     outcomes: {
@@ -475,7 +488,7 @@ const en: Dict = {
       titleStart: 'If you don’t feel better, ',
       titleMark: 'I’ll give you your money back',
       titleEnd: '.',
-      text: 'Attend all 8 live classes and follow your protocol. If you don’t feel better by the end of week 8, I give you a full refund. I carry the risk, not you.',
+      text: 'Attend all 8 live classes and follow your protocol. If you don’t feel better by the end of week 8, I give you a full refund.',
     },
     stories: {
       eyebrow: 'Real stories',
@@ -486,6 +499,7 @@ const en: Dict = {
       title: 'What women often ask me.',
       items: [
         { q: 'Is it in Spanish?', a: 'Yes. Every class and Q&A session is in Spanish.' },
+        { q: 'I’m under 40. Is it for me?', a: 'Yes. Perimenopause can start at 35, and many women go through it without knowing it has a name. If you’re sleeping worse, feeling more anxious or drained and don’t know why, the program helps you understand what’s happening in your body.' },
         { q: 'Do I need to live in Vancouver?', a: 'No. It’s all online. You can join from anywhere in Canada or the US, and the HTMA kit is mailed to you.' },
         { q: 'Why a hair test?', a: 'HTMA shows the mineral imbalance that may be behind your symptoms. That way your protocol is made for you, not generic.' },
         { q: 'What if I already see a doctor?', a: 'Good. The program works alongside your doctor’s care; it doesn’t replace it.' },

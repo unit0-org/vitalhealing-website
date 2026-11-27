@@ -68,6 +68,7 @@ const registerUrl = programs.menopause.registerUrl || site.bookingUrl;
         {m.approach.steps.map((s, i) => (
           <li>
             <span class="num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            {s.tag && <span class="tag">{s.tag}</span>}
             <h3>{s.title}</h3>
             <p>{s.text}</p>
           </li>
@@ -217,6 +218,9 @@ const registerUrl = programs.menopause.registerUrl || site.bookingUrl;
   .steps { list-style: none; padding: 0; margin: var(--space-2) 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
   .steps li { background: color-mix(in srgb, var(--white) 7%, var(--forest)); border-radius: var(--radius-md); padding: var(--space-4) var(--space-3); border-top: 4px solid var(--leaf); }
   .steps p { margin: 0; }
+  /* Marks the HTMA test as the program's differentiator */
+  .steps li { position: relative; }
+  .tag { position: absolute; top: calc(var(--space-4) + 8px); right: var(--space-3); padding: 4px 12px; border-radius: var(--radius-sm); background: var(--sage); color: var(--forest); font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
   .num { display: block; font-family: var(--font-display); font-size: 44px; line-height: 1; color: var(--leaf); margin-bottom: var(--space-3); }
 
   /* Outcomes */
@@ -285,6 +289,7 @@ const registerUrl = programs.menopause.registerUrl || site.bookingUrl;
     .hero-grid, .steps, .signs, .included { grid-template-columns: 1fr; }
     .hero-photo { display: none; }
     .hero-copy, .head, .steps li { text-align: center; }
+    .tag { position: static; display: inline-block; margin-bottom: var(--space-2); }
     .hero-copy .lede { margin-inline: auto; }
     .hero-copy .btn-row, .facts { justify-content: center; }
     .signs { gap: var(--space-1); }
