@@ -202,6 +202,12 @@ const es = {
       closeStart: 'Te dijeron que es “cosa de la edad”.',
       closeMark: 'Yo no estoy de acuerdo',
       closeEnd: '.',
+      didYouKnow: {
+        titleStart: '¿Sabías que la perimenopausia puede empezar',
+        titleMark: 'a los 35 años',
+        titleEnd: '?',
+        text: 'Es la etapa antes de la menopausia. Muchas mujeres la viven sin saber que tiene nombre.',
+      },
     },
     learn: {
       eyebrow: 'Lo que vas a aprender',
@@ -236,7 +242,7 @@ const es = {
     forYou: {
       title: 'Esta masterclass es para ti si…',
       items: [
-        'Estás en la perimenopausia o la menopausia y notas cambios que no entiendes.',
+        'Tienes 35 años o más y notas cambios en tu cuerpo o tu ánimo que no entiendes.',
         'Quieres respuestas claras, no solo pastillas para tapar síntomas.',
         'Estás lista para hacer pequeños cambios que se notan.',
         'Quieres volver a sentirte tú, con energía y calma.',
