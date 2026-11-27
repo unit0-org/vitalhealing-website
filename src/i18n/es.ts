@@ -199,7 +199,9 @@ const es = {
         'Olvidas palabras y te cuesta concentrarte.',
         'Los calores llegan en el peor momento.',
       ],
-      close: 'Te dijeron que es “cosa de la edad”. Yo no estoy de acuerdo.',
+      closeStart: 'Te dijeron que es “cosa de la edad”.',
+      closeMark: 'Yo no estoy de acuerdo',
+      closeEnd: '.',
     },
     learn: {
       eyebrow: 'Lo que vas a aprender',
@@ -207,19 +209,27 @@ const es = {
       items: [
         {
           title: 'Alimentación',
-          text: 'Qué poner en tu plato para tener una energía más estable durante el día.',
+          textStart: 'Qué poner en tu plato para tener una ',
+          textBold: 'energía más estable durante el día',
+          textEnd: '.',
         },
         {
           title: 'Descanso',
-          text: 'Un ajuste sencillo en tu rutina para dormir mejor y despertar con más energía.',
+          textStart: 'Un ajuste sencillo en tu rutina para ',
+          textBold: 'dormir mejor y despertar con más energía',
+          textEnd: '.',
         },
         {
           title: 'Relación con la comida',
-          text: 'Cómo entender tus antojos y comer sin culpa ni pelea contigo misma.',
+          textStart: 'Cómo entender tus antojos y ',
+          textBold: 'comer sin culpa ni pelea contigo misma',
+          textEnd: '.',
         },
         {
           title: 'Calma',
-          text: 'Una práctica corta para bajar la ansiedad y sentirte más tranquila.',
+          textStart: 'Una práctica corta para ',
+          textBold: 'bajar la ansiedad y sentirte más tranquila',
+          textEnd: '.',
         },
       ],
     },

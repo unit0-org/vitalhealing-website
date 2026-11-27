@@ -200,7 +200,9 @@ const en: Dict = {
         'You lose words and struggle to focus.',
         'Hot flashes hit at the worst possible moment.',
       ],
-      close: 'You were told it’s “just your age”. I disagree.',
+      closeStart: 'You were told it’s “just your age”.',
+      closeMark: 'I disagree',
+      closeEnd: '.',
     },
     learn: {
       eyebrow: 'What you’ll learn',
@@ -208,19 +210,27 @@ const en: Dict = {
       items: [
         {
           title: 'Food',
-          text: 'What to put on your plate for steadier energy through the day.',
+          textStart: 'What to put on your plate for ',
+          textBold: 'steadier energy through the day',
+          textEnd: '.',
         },
         {
           title: 'Rest',
-          text: 'One simple change to your routine to sleep better and wake up with more energy.',
+          textStart: 'One simple change to your routine to ',
+          textBold: 'sleep better and wake up with more energy',
+          textEnd: '.',
         },
         {
           title: 'Your relationship with food',
-          text: 'How to understand your cravings and eat without guilt or a fight with yourself.',
+          textStart: 'How to understand your cravings and ',
+          textBold: 'eat without guilt or a fight with yourself',
+          textEnd: '.',
         },
         {
           title: 'Calm',
-          text: 'A short practice to ease anxiety and feel more at peace.',
+          textStart: 'A short practice to ',
+          textBold: 'ease anxiety and feel more at peace',
+          textEnd: '.',
         },
       ],
     },
