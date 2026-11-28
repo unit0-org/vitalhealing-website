@@ -11,6 +11,8 @@ const d = t(lang);
 const h = d.home;
 const soon = lang === 'es' ? 'Foto próximamente' : 'Photo coming soon';
 // Program card photos (AI illustrative, see CONTENT_RULES.md). Set a slot to undefined to show the placeholder.
+// Card text may mark key words with **double asterisks**; they render in bold.
+const boldParts = (t: string) => t.split(/\*\*(.+?)\*\*/g);
 const cardPhotos = ['/images/program-menopause.webp', '/images/program-autism.webp', '/images/program-vitality.webp'];
 ---
 <Base lang={lang} route="home" title={d.meta.home.title} description={d.meta.home.description}>
@@ -65,7 +67,7 @@ const cardPhotos = ['/images/program-menopause.webp', '/images/program-autism.we
             <PhotoSlot src={cardPhotos[i]} alt={c.photoAlt} ratio="3 / 2" label={soon} class="who-photo" />
             <div class="who-body">
               <h3>{c.title}</h3>
-              <p>{c.text}</p>
+              <p>{boldParts(c.text).map((part, j) => (j % 2 ? <strong>{part}</strong> : part))}</p>
               <a class="btn btn--ghost" href={path(c.key as RouteKey, lang)}>{c.cta}</a>
             </div>
           </li>
@@ -135,6 +137,7 @@ const cardPhotos = ['/images/program-menopause.webp', '/images/program-autism.we
   .who-card .btn--ghost:hover { background: var(--forest); }
   .who-body { padding: var(--space-3); display: flex; flex-direction: column; flex: 1; text-align: center; }
   .who-body p { flex: 1; margin-bottom: 40px; }
+  .who-body strong { color: var(--forest); font-weight: 700; }
   .who-body .btn { align-self: center; }
 
   .about { display: grid; grid-template-columns: 380px 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }

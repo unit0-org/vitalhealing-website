@@ -78,22 +78,22 @@ const es = {
         {
           key: 'programMenopause',
           photoAlt: 'Mujer sonriendo con una taza de té en un jardín',
-          title: 'Mujeres en perimenopausia y menopausia',
-          text: 'Sofocos, insomnio, niebla mental, un peso que no se mueve. Es común, pero no es “cosa de la edad”. Te ayudo a descubrir qué necesita tu cuerpo y a recuperar tu energía.',
+          title: 'Mujeres de 35 en adelante',
+          text: 'Duermes mal, estás ansiosa o sin energía y no sabes por qué. Puede ser la **perimenopausia**, que empieza antes de lo que crees, o la **menopausia**. Te ayudo a descubrir qué necesita tu cuerpo y a recuperar tu energía.',
           cta: 'Ver el programa',
         },
         {
           key: 'programAutism',
           photoAlt: 'Mamá e hijo compartiendo un plato de fruta y verduras en la cocina',
           title: 'Familias con niños autistas',
-          text: 'Comidas que son una batalla, un niño que come muy pocas cosas y una mamá que ya no puede más. Acompaño la nutrición del niño y también a la mamá.',
+          text: 'Comidas que son una batalla, un niño que come muy pocas cosas y una mamá que ya no puede más. Acompaño la **nutrición del niño** y también a **la mamá**.',
           cta: 'Ver el programa',
         },
         {
           key: 'programVitality',
           photoAlt: 'Pareja caminando y riendo por un sendero en el bosque',
           title: 'Quien quiere sentirse increíble',
-          text: '“Estar bien” no es lo mismo que sentirse increíble. Si quieres más energía, dormir mejor y vivir con plenitud, te muestro cómo, paso a paso.',
+          text: '“Estar bien” no es lo mismo que sentirse increíble. Si quieres **más energía, dormir mejor y vivir con plenitud**, te muestro cómo, paso a paso.',
           cta: 'Ver el programa',
         },
       ],
@@ -202,12 +202,21 @@ const es = {
       closeStart: 'Te dijeron que es “cosa de la edad”.',
       closeMark: 'Yo no estoy de acuerdo',
       closeEnd: '.',
-      didYouKnow: {
-        titleStart: '¿Sabías que la perimenopausia puede empezar',
-        titleMark: 'a los 35 años',
-        titleEnd: '?',
-        text: 'Es la etapa antes de la menopausia. Muchas mujeres la viven sin saber que tiene nombre.',
+    },
+    peri: {
+      titleStart: '¿Sabías que la perimenopausia puede empezar',
+      titleMark: 'a los 35 años',
+      titleEnd: '?',
+      sub: 'Es la etapa antes de la menopausia, y suele llegar antes de lo que imaginamos.',
+      what: {
+        title: '¿Qué es?',
+        text: 'Una etapa de transición en la que tus hormonas empiezan a cambiar, aunque todavía tengas tu regla. Puede durar varios años.',
       },
+      why: {
+        title: '¿Por qué actuar ahora?',
+        text: 'Si recién empiezas a notar algunas señales, es el mejor momento. Pequeños cambios hoy te ayudan a vivir esta etapa con energía y calma, en lugar de aguantarla durante años.',
+      },
+      close: 'Por eso preparé esta masterclass: para que llegues a tiempo.',
     },
     learn: {
       eyebrow: 'Lo que vas a aprender',
@@ -261,6 +270,10 @@ const es = {
         {
           q: '¿De verdad es gratis?',
           a: 'Sí. La masterclass es 100% gratuita. Solo necesitas registrarte con tu correo para recibir el enlace.',
+        },
+        {
+          q: 'Tengo menos de 40, ¿es para mí?',
+          a: 'Sí. La perimenopausia puede empezar a los 35 años, y muchas mujeres la viven sin saber que tiene nombre. Si te reconoces en alguno de estos cambios, la masterclass te ayuda a entender por qué te pasa.',
         },
         {
           q: '¿Y si no puedo asistir en vivo?',
@@ -402,7 +415,7 @@ const es = {
       titleStart: 'La menopausia',
       titleMark: 'no tiene que',
       titleEnd: ' sentirse así.',
-      sub: 'Reseteo Hormonal es mi programa de 8 semanas para mujeres en perimenopausia y menopausia. Empieza con un análisis de minerales, te da un plan hecho para tu cuerpo y te acompaño cada semana, en español.',
+      sub: 'Reseteo Hormonal es mi programa para mujeres desde los 35 años, en la perimenopausia o la menopausia. Empieza con un análisis de minerales, te da un plan hecho para tu cuerpo y te acompaño cada semana.',
       facts: ['8 semanas', 'En línea y en español', 'Grupos de 20 mujeres'],
       ctaPrimary: 'Inscríbete en Reseteo Hormonal',
       ctaSecondary: 'Únete a la masterclass gratuita',
@@ -423,13 +436,13 @@ const es = {
       closeEnd: ', y no tienes que aguantarlo.',
     },
     approach: {
-      eyebrow: 'Cómo funciona',
+      eyebrow: 'Cómo funciona y por qué es único',
       title: 'Primero entender. Luego cambiar.',
       text: 'Detrás de muchos síntomas hay un desequilibrio de minerales que nadie ha medido. Por eso el programa empieza con una prueba, no con una dieta genérica.',
       steps: [
-        { title: 'Tu análisis de minerales', text: 'Recibes en casa un kit HTMA: una pequeña muestra de cabello que muestra cómo están tus minerales. Reviso contigo los resultados en una sesión 1:1 de 60 minutos.' },
-        { title: 'Tu plan', text: 'Con esos resultados recibes un protocolo de minerales hecho para ti, planes de alimentación, más de 50 recetas y una guía para cada semana.' },
-        { title: 'Ocho semanas acompañada', text: 'Cada semana, una clase en vivo conmigo y una sesión de preguntas. En un grupo pequeño de mujeres que viven lo mismo que tú.' },
+        { tag: 'Lo que lo hace único', title: 'Tu análisis de minerales', text: 'Recibes en casa un kit HTMA: una pequeña muestra de cabello que revela cómo están tus minerales. Reviso contigo los resultados en una sesión 1:1 de 60 minutos.' },
+        { tag: '', title: 'Tu ajuste de minerales', text: 'Con tus resultados recibes un protocolo de minerales hecho para ti, junto con planes de alimentación, más de 50 recetas y una guía para cada semana.' },
+        { tag: '', title: 'Ocho semanas acompañada', text: 'Cada semana, una clase en vivo conmigo y una sesión de preguntas. En un grupo pequeño de mujeres que viven lo mismo que tú.' },
       ],
     },
     outcomes: {
@@ -474,7 +487,7 @@ const es = {
       titleStart: 'Si no te sientes mejor, ',
       titleMark: 'te devuelvo tu dinero',
       titleEnd: '.',
-      text: 'Asiste a las 8 clases en vivo y sigue tu protocolo. Si al final de la semana 8 no te sientes mejor, te devuelvo el 100 %. El riesgo lo asumo yo, no tú.',
+      text: 'Asiste a las 8 clases en vivo y sigue tu protocolo. Si al final de la semana 8 no te sientes mejor, te devuelvo el 100 %.',
     },
     stories: {
       eyebrow: 'Historias reales',
@@ -485,6 +498,7 @@ const es = {
       title: 'Lo que suelen preguntarme.',
       items: [
         { q: '¿Es en español?', a: 'Sí. Todas las clases y sesiones de preguntas son en español.' },
+        { q: 'Tengo menos de 40, ¿es para mí?', a: 'Sí. La perimenopausia puede empezar a los 35 años, y muchas mujeres la viven sin saber que tiene nombre. Si duermes peor, estás más ansiosa o sin energía y no sabes por qué, el programa te ayuda a entender qué está pasando en tu cuerpo.' },
         { q: '¿Tengo que vivir en Vancouver?', a: 'No. Todo es en línea. Puedes unirte desde cualquier lugar de Canadá o Estados Unidos, y el kit HTMA te llega a casa.' },
         { q: '¿Por qué un análisis de cabello?', a: 'El HTMA muestra el desequilibrio de minerales que puede estar detrás de tus síntomas. Así tu protocolo se hace para ti y no es genérico.' },
         { q: '¿Y si ya tengo médico?', a: 'Qué bueno. El programa complementa el cuidado de tu médico; no lo reemplaza.' },
